@@ -1,0 +1,5 @@
+D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.csprojAssemblyReference.cache
+D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\bin\Debug\PatientRecordApp.Core.dll
+D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\bin\Debug\PatientRecordApp.Core.pdb
+D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.dll
+D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.pdb
