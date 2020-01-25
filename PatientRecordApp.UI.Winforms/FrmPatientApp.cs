@@ -12,7 +12,6 @@ namespace PatientRecordApp.UI.Winforms
 	{
 		private readonly ICSVManager _manager;
 		private readonly IList<Patient> _patientList;
-		private static IList<Patient> _patientSearchList;
 		private static string _nameValue;
 		private static string _genderValue;
 		private static string _dateOfConsultationValue;
@@ -23,7 +22,6 @@ namespace PatientRecordApp.UI.Winforms
 		{
 			_manager = new CSVBaseManager();
 			_patientList = _manager.Read();
-			_patientSearchList = new List<Patient>();
 			_nameValue = string.Empty;
 			_genderValue = string.Empty;
 			_dateOfConsultationValue = string.Empty;
@@ -34,12 +32,10 @@ namespace PatientRecordApp.UI.Winforms
 
 		private void FrmPatientApp_Activated(object sender, EventArgs e)
 		{
-			var patientList = _manager.Read();
-
 			CboDiagnosis.Items.Clear();
-			CboDiagnosis.Items.AddRange(patientList.OrderBy(x => x.Diagnosis).Select(x => x.Diagnosis).Distinct().ToArray());
+			CboDiagnosis.Items.AddRange(_patientList.OrderBy(x => x.Diagnosis).Select(x => x.Diagnosis).Distinct().ToArray());
 
-			DisplayDataInListView(patientList);
+			DisplayDataInListView(_patientList);
 		}
 
 		private void BtnAddPatient_Click(object sender, EventArgs e)
@@ -95,62 +91,18 @@ namespace PatientRecordApp.UI.Winforms
 
 		private void BtnSearch_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrWhiteSpace(_nameValue))
-			{
-				_patientSearchList = _patientList;
-
-				if (!string.IsNullOrWhiteSpace(_genderValue))
-				{
-					FilterByGender(_genderValue);
-				}
-
-				if (!string.IsNullOrWhiteSpace(_dateOfConsultationValue))
-				{
-					FilterByDateOfConsultation(_dateOfConsultationValue);
-				}
-
-				if (!string.IsNullOrWhiteSpace(_diagnosisValue))
-				{
-					FilterByDiagnosis(_diagnosisValue);
-				}
-			}
-
 			_nameValue = TxtSearch.Text;
 
-			SearchByName(_nameValue);
-
-			DisplayDataInListView(_patientSearchList);
+			DisplayDataInListView(_manager.RetrieveDataThroughSearchFilters(_nameValue, _genderValue, _dateOfConsultationValue, _diagnosisValue));
 		}
 
 		private void RdbMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (!_resetFlag)
 			{
-				if (!string.IsNullOrWhiteSpace(_genderValue))
-				{
-					_patientSearchList = _patientList;
-
-					if (!string.IsNullOrWhiteSpace(_dateOfConsultationValue))
-					{
-						FilterByDateOfConsultation(_dateOfConsultationValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_diagnosisValue))
-					{
-						FilterByDiagnosis(_diagnosisValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_nameValue))
-					{
-						SearchByName(_nameValue);
-					}
-				}
-
 				_genderValue = RdbMale.Text;
 
-				FilterByGender(_genderValue);
-
-				DisplayDataInListView(_patientSearchList);
+				DisplayDataInListView(_manager.RetrieveDataThroughSearchFilters(_nameValue, _genderValue, _dateOfConsultationValue, _diagnosisValue));
 			}
 		}
 
@@ -158,31 +110,9 @@ namespace PatientRecordApp.UI.Winforms
 		{
 			if (!_resetFlag)
 			{
-				if (!string.IsNullOrWhiteSpace(_genderValue))
-				{
-					_patientSearchList = _patientList;
-
-					if (!string.IsNullOrWhiteSpace(_dateOfConsultationValue))
-					{
-						FilterByDateOfConsultation(_dateOfConsultationValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_diagnosisValue))
-					{
-						FilterByDiagnosis(_diagnosisValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_nameValue))
-					{
-						SearchByName(_nameValue);
-					}
-				}
-
 				_genderValue = RdbFemale.Text;
 
-				FilterByGender(_genderValue);
-
-				DisplayDataInListView(_patientSearchList);
+				DisplayDataInListView(_manager.RetrieveDataThroughSearchFilters(_nameValue, _genderValue, _dateOfConsultationValue, _diagnosisValue));
 			}
 		}
 
@@ -190,31 +120,9 @@ namespace PatientRecordApp.UI.Winforms
 		{
 			if (!_resetFlag)
 			{
-				if (!string.IsNullOrWhiteSpace(_dateOfConsultationValue))
-				{
-					_patientSearchList = _patientList;
-
-					if (!string.IsNullOrWhiteSpace(_genderValue))
-					{
-						FilterByGender(_genderValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_diagnosisValue))
-					{
-						FilterByDiagnosis(_diagnosisValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_nameValue))
-					{
-						SearchByName(_nameValue);
-					}
-				}
-
 				_dateOfConsultationValue = DtpDateOfConsultation.Value.Date.ToString().Substring(0, 10);
 
-				FilterByDateOfConsultation(_dateOfConsultationValue);
-
-				DisplayDataInListView(_patientSearchList);
+				DisplayDataInListView(_manager.RetrieveDataThroughSearchFilters(_nameValue, _genderValue, _dateOfConsultationValue, _diagnosisValue));
 			}
 		}
 
@@ -222,31 +130,9 @@ namespace PatientRecordApp.UI.Winforms
 		{
 			if (!_resetFlag)
 			{
-				if (!string.IsNullOrWhiteSpace(_diagnosisValue))
-				{
-					_patientSearchList = _patientList;
-
-					if (!string.IsNullOrWhiteSpace(_genderValue))
-					{
-						FilterByGender(_genderValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_dateOfConsultationValue))
-					{
-						FilterByDateOfConsultation(_dateOfConsultationValue);
-					}
-
-					if (!string.IsNullOrWhiteSpace(_nameValue))
-					{
-						SearchByName(_nameValue);
-					}
-				}
-
 				_diagnosisValue = CboDiagnosis.SelectedItem.ToString();
 
-				FilterByDiagnosis(_diagnosisValue);
-
-				DisplayDataInListView(_patientSearchList);
+				DisplayDataInListView(_manager.RetrieveDataThroughSearchFilters(_nameValue, _genderValue, _dateOfConsultationValue, _diagnosisValue));
 			}
 		}
 
@@ -264,7 +150,6 @@ namespace PatientRecordApp.UI.Winforms
 			_dateOfConsultationValue = string.Empty;
 			CboDiagnosis.ResetText();
 			_diagnosisValue = string.Empty;
-			_patientSearchList = new List<Patient>();
 			_resetFlag = false;
 		}
 
@@ -288,144 +173,6 @@ namespace PatientRecordApp.UI.Winforms
 			}
 
 			LvPatients.Items.AddRange(listViewItemList.ToArray());
-		}
-
-		private void SearchByName(string name)
-		{
-			var searchList = new List<Patient>();
-
-			if (_patientSearchList.Count == 0)
-			{
-				foreach (Patient patient in _patientList)
-				{
-					var counter = 0;
-					var nameSplit = name.Split(' ');
-					var fullName = $"{patient.FirstName} {patient.Surname}";
-
-					foreach (var split in nameSplit)
-					{
-						while (fullName.ToLower().Contains(split.ToLower()))
-						{
-							counter++;
-							break;
-						}
-
-						if (counter == nameSplit.Length)
-						{
-							_patientSearchList.Add(patient);
-						}
-					}
-				}
-			}
-			else
-			{
-				foreach (Patient patient in _patientSearchList)
-				{
-					var counter = 0;
-					var nameSplit = name.Split(' ');
-					var fullName = $"{patient.FirstName} {patient.Surname}";
-
-					foreach (var split in nameSplit)
-					{
-						while (fullName.ToLower().Contains(split.ToLower()))
-						{
-							counter++;
-							break;
-						}
-
-						if (counter == nameSplit.Length)
-						{
-							searchList.Add(patient);
-						}
-					}
-				}
-
-				_patientSearchList = searchList;
-			}
-		}
-
-		private void FilterByGender(string gender)
-		{
-			var genderList = new List<Patient>();
-
-			if (_patientSearchList.Count == 0)
-			{
-				foreach (Patient patient in _patientList)
-				{
-					if (patient.Gender.Equals(gender))
-					{
-						_patientSearchList.Add(patient);
-					}
-				}
-			}
-			else
-			{
-				foreach (Patient patient in _patientSearchList)
-				{
-					if (patient.Gender.Equals(gender))
-					{
-						genderList.Add(patient);
-					}
-				}
-
-				_patientSearchList = genderList;
-			}
-		}
-
-		private void FilterByDateOfConsultation(string dateOfConsultation)
-		{
-			var dateOfConsultationList = new List<Patient>();
-
-			if (_patientSearchList.Count == 0)
-			{
-				foreach (Patient patient in _patientList)
-				{
-					if (patient.DateOfConsultation.Date.ToString().Contains(dateOfConsultation))
-					{
-						_patientSearchList.Add(patient);
-					}
-				}
-			}
-			else
-			{
-				foreach (Patient patient in _patientSearchList)
-				{
-					if (patient.DateOfConsultation.Date.ToString().Contains(dateOfConsultation))
-					{
-						dateOfConsultationList.Add(patient);
-					}
-				}
-
-				_patientSearchList = dateOfConsultationList;
-			}
-		}
-
-		private void FilterByDiagnosis(string diagnosis)
-		{
-			var diagnosisList = new List<Patient>();
-
-			if (_patientSearchList.Count == 0)
-			{
-				foreach (Patient patient in _patientList)
-				{
-					if (patient.Diagnosis.Equals(diagnosis))
-					{
-						_patientSearchList.Add(patient);
-					}
-				}
-			}
-			else
-			{
-				foreach (Patient patient in _patientSearchList)
-				{
-					if (patient.Diagnosis.Equals(diagnosis))
-					{
-						diagnosisList.Add(patient);
-					}
-				}
-
-				_patientSearchList = diagnosisList;
-			}
 		}
 	}
 }

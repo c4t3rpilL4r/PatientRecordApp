@@ -11,27 +11,27 @@ namespace PatientRecordApp.Core.Repositories
 {
     internal class CSVBaseRepository : ICSVRepository
     {
-        private readonly string filePath = ConfigurationManager.AppSettings["CSVPath"];
-        private static IList<Patient> patientList = new List<Patient>();
+        private readonly string _filePath = ConfigurationManager.AppSettings["CSVPath"];
+        private static IList<Patient> _patientList = new List<Patient>();
 
         public bool Create(Patient patient)
         {
-            patientList.Add(patient);
+            _patientList.Add(patient);
 
             return WriteIntoCSVFile();
         }
 
         public IList<Patient> Read()
         {
-            if (patientList.Count == 0)
+            if (_patientList.Count == 0)
             {
-                var data = File.ReadAllLines(filePath);
+                var data = File.ReadAllLines(_filePath);
 
                 foreach (var line in data)
                 {
                     var patient = line.Split(',');
 
-                    patientList.Add(new Patient()
+                    _patientList.Add(new Patient()
                     {
                         Surname = patient[0],
                         FirstName = patient[1],
@@ -42,14 +42,14 @@ namespace PatientRecordApp.Core.Repositories
                 }
             }
 
-            return patientList;
+            return _patientList;
         }
 
         public bool Update(Patient oldPatientRecord, Patient newPatientRecord)
         {
-            patientList.Remove(patientList.FirstOrDefault(patient => patient.isEqual(oldPatientRecord)));
+            _patientList.Remove(_patientList.FirstOrDefault(patient => patient.isEqual(oldPatientRecord)));
 
-            patientList.Add(newPatientRecord);
+            _patientList.Add(newPatientRecord);
 
             return WriteIntoCSVFile();
         }
@@ -58,10 +58,87 @@ namespace PatientRecordApp.Core.Repositories
         {
             patients.ForEach(tobeRemove =>
             {
-                patientList.Remove(patientList.FirstOrDefault(patient => patient.isEqual(tobeRemove)));
+                _patientList.Remove(_patientList.FirstOrDefault(patient => patient.isEqual(tobeRemove)));
             });
 
             return WriteIntoCSVFile();
+        }
+
+        public IList<Patient> RetrieveDataThroughSearchFilters(string name, string gender, string dateOfConsultation, string diagnosis)
+        {
+            var patientList = _patientList;
+            var searchList = new List<Patient>();
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                foreach (Patient patient in patientList)
+                {
+                    var counter = 0;
+                    var nameSplit = name.Split(' ');
+                    var fullName = $"{patient.FirstName} {patient.Surname}";
+
+                    foreach (var split in nameSplit)
+                    {
+                        while (fullName.ToLower().Contains(split.ToLower()))
+                        {
+                            counter++;
+                            break;
+                        }
+
+                        if (counter == nameSplit.Length)
+                        {
+                            searchList.Add(patient);
+                        }
+                    }
+                }
+
+                patientList = searchList;
+                searchList = new List<Patient>();
+            }
+
+            if (!string.IsNullOrWhiteSpace(gender))
+            {
+                foreach (Patient patient in patientList)
+                {
+                    if (patient.Gender.Equals(gender))
+                    {
+                        searchList.Add(patient);
+                    }
+                }
+
+                patientList = searchList;
+                searchList = new List<Patient>();
+            }
+
+            if (!string.IsNullOrWhiteSpace(dateOfConsultation))
+            {
+                foreach (Patient patient in patientList)
+                {
+                    if (patient.DateOfConsultation.Date.ToString().Contains(dateOfConsultation))
+                    {
+                        searchList.Add(patient);
+                    }
+                }
+
+                patientList = searchList;
+                searchList = new List<Patient>();
+            }
+
+            if (!string.IsNullOrWhiteSpace(diagnosis))
+            {
+                foreach (Patient patient in patientList)
+                {
+                    if (patient.Diagnosis.Equals(diagnosis))
+                    {
+                        searchList.Add(patient);
+                    }
+                }
+
+                patientList = searchList;
+                searchList = new List<Patient>();
+            }
+
+            return patientList;
         }
 
         private bool WriteIntoCSVFile()
@@ -70,7 +147,7 @@ namespace PatientRecordApp.Core.Repositories
             {
                 var stringBuilder = new StringBuilder();
 
-                foreach (Patient patient in patientList)
+                foreach (Patient patient in _patientList)
                 {
                     string[] value = { patient.Surname, patient.FirstName, patient.Gender, patient.DateOfConsultation.ToString(), patient.Diagnosis, Environment.NewLine };
 
@@ -79,7 +156,7 @@ namespace PatientRecordApp.Core.Repositories
                     stringBuilder.Append(data);
                 }
 
-                using (StreamWriter streamWriter = new StreamWriter(filePath))
+                using (StreamWriter streamWriter = new StreamWriter(_filePath))
                 {
                     streamWriter.Write(stringBuilder);
                 }
