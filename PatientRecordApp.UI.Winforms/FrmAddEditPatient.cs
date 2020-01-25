@@ -9,11 +9,12 @@ namespace PatientRecordApp.UI.Winforms
 {
     public partial class FrmAddEditPatient : Form
     {
-        private ICSVManager _manager = new CSVBaseManager();
+        private ICSVManager _manager;
         private Patient _patient;
 
         public FrmAddEditPatient(Patient patient = null)
         {
+            _manager = new CSVBaseManager();
             _patient = patient;
             InitializeComponent();
         }

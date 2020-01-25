@@ -11,3 +11,16 @@ D:\PatientApp\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRec
 D:\PatientApp\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.csproj.CopyComplete
 D:\PatientApp\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.exe
 D:\PatientApp\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.pdb
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\bin\Debug\PatientRecordApp.UI.Winforms.exe.config
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\bin\Debug\PatientRecordApp.UI.Winforms.exe
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\bin\Debug\PatientRecordApp.UI.Winforms.pdb
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\bin\Debug\PatientRecordApp.Core.dll
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\bin\Debug\PatientRecordApp.Core.pdb
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.csprojAssemblyReference.cache
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.FrmAddEditPatient.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.FrmPatientApp.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.Properties.Resources.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.csproj.GenerateResource.cache
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.csproj.CopyComplete
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.exe
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms\obj\Debug\PatientRecordApp.UI.Winforms.pdb

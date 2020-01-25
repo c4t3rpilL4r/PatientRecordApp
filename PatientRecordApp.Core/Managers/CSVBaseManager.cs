@@ -29,10 +29,5 @@ namespace PatientRecordApp.Core.Managers
         {
             return repository.Delete(patients);
         }
-
-        public IList<Patient> FindByWhereCondition(string keyword)
-        {
-            return repository.FindByWhereCondition(keyword);
-        }
     }
 }

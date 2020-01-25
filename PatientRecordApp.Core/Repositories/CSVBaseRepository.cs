@@ -64,34 +64,6 @@ namespace PatientRecordApp.Core.Repositories
             return WriteIntoCSVFile();
         }
 
-        public IList<Patient> FindByWhereCondition(string name)
-        {
-            var searchPatients = new List<Patient>();
-
-            foreach (Patient patient in patientList)
-            {
-                var counter = 0;
-                var nameSplit = name.Split(' ');
-                var fullName = $"{patient.FirstName} {patient.Surname}";
-
-                foreach (var split in nameSplit)
-                {
-                    while (fullName.ToLower().Contains(split.ToLower()))
-                    {
-                        counter++;
-                        break;
-                    }
-
-                    if (counter == nameSplit.Length)
-                    {
-                        searchPatients.Add(patient);
-                    }
-                }
-            }
-
-            return searchPatients;
-        }
-
         private bool WriteIntoCSVFile()
         {
             try

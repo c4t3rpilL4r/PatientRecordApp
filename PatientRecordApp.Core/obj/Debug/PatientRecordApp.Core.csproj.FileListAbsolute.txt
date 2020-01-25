@@ -3,3 +3,8 @@ D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\bin\Debug\PatientRecordApp.
 D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\bin\Debug\PatientRecordApp.Core.pdb
 D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.dll
 D:\PatientApp\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.pdb
+D:\PatientRecordApp\PatientRecordApp.Core\bin\Debug\PatientRecordApp.Core.dll
+D:\PatientRecordApp\PatientRecordApp.Core\bin\Debug\PatientRecordApp.Core.pdb
+D:\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.csprojAssemblyReference.cache
+D:\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.dll
+D:\PatientRecordApp\PatientRecordApp.Core\obj\Debug\PatientRecordApp.Core.pdb

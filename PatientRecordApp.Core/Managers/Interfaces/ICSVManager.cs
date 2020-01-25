@@ -9,6 +9,5 @@ namespace PatientRecordApp.Core.Managers.Interfaces
         IList<Patient> Read();
         bool Update(Patient oldPatientRecord, Patient newPatientRecordt);
         bool Delete(List<Patient> patients);
-        IList<Patient> FindByWhereCondition(string keyword);
     }
 }
