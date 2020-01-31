@@ -8,3 +8,4 @@ D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.pdb
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmAddPatient.resources
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmPatientRecordApp.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmAddDoctor.resources

@@ -11,7 +11,9 @@ namespace PatientRecordApp.Core.Repositories
 {
     internal class CSVBaseRepository : ICSVRepository
     {
-        private readonly string _filePath = ConfigurationManager.AppSettings["CSVPath"];
+        private readonly string _patientFilePath = ConfigurationManager.AppSettings["PatientCSVPath"];
+        private readonly string _doctorFilePath = ConfigurationManager.AppSettings["PatientCSVPath"];
+        private readonly string _addressFilePath = ConfigurationManager.AppSettings["PatientCSVPath"];
         private static IList<Patient> _patientList = new List<Patient>();
 
         public bool Create(Patient patient)
@@ -25,19 +27,71 @@ namespace PatientRecordApp.Core.Repositories
         {
             if (_patientList.Count == 0)
             {
-                var data = File.ReadAllLines(_filePath);
+                var doctor = new Doctor();
+                var address = new Address();
 
-                foreach (var line in data)
+                var patientData = File.ReadAllLines(_patientFilePath);
+                var doctorData = File.ReadAllLines(_doctorFilePath);
+                var addressData = File.ReadAllLines(_addressFilePath);
+                
+                foreach (var lineInPatientData in patientData)
                 {
-                    var patient = line.Split(',');
+                    var patientArray = lineInPatientData.Split(',');
+
+                    foreach (var lineInAddressData in addressData)
+                    {
+                        var addressArray = lineInAddressData.Split(',');
+
+                        if (int.Parse(addressArray[0]) == int.Parse(patientArray[6]))
+                        {
+                            address.Address1 = addressArray[1];
+                            address.Address2 = addressArray[2];
+                            address.City = addressArray[3];
+                            address.Province = addressArray[4];
+                            address.Country = addressArray[5];
+                            address.ZipCode = int.Parse(addressArray[6]);
+                            break;
+                        }
+                    }
+
+                    foreach (var lineInDoctorData in doctorData)
+                    {
+                        var doctorArray = lineInDoctorData.Split(',');
+
+                        if (int.Parse(doctorArray[0]) == int.Parse(patientArray[9]))
+                        {
+                            doctor.FirstName = doctorArray[1];
+                            doctor.LastName = doctorArray[2];
+                            doctor.Department = doctorArray[3];
+                            break;
+                        }
+                    }
 
                     _patientList.Add(new Patient()
                     {
-                        Surname = patient[0],
-                        FirstName = patient[1],
-                        Gender = patient[2],
-                        DateOfConsultation = DateTime.Parse(patient[3]),
-                        Diagnosis = patient[4],
+                        Id = int.Parse(patientArray[0]),
+                        Surname = patientArray[1],
+                        FirstName = patientArray[2],
+                        Gender = patientArray[3],
+                        MobileNumber = int.Parse(patientArray[4]),
+                        EmailAddress = patientArray[5],
+                        Address = new Address()
+                        {
+                            Address1 = address.Address1,
+                            Address2 = address.Address2,
+                            City = address.City,
+                            Province = address.Province,
+                            Country = address.Country,
+                            ZipCode = address.ZipCode
+                        },
+                        DateOfConsultation = DateTime.Parse(patientArray[12]),
+                        Diagnosis = patientArray[13],
+                        Doctor = new Doctor()
+                        {
+                            FirstName = doctor.FirstName,
+                            LastName = doctor.LastName,
+                            Department = doctor.Department
+                        }
                     });
                 }
             }
@@ -156,7 +210,7 @@ namespace PatientRecordApp.Core.Repositories
                     stringBuilder.Append(data);
                 }
 
-                using (StreamWriter streamWriter = new StreamWriter(_filePath))
+                using (StreamWriter streamWriter = new StreamWriter(_patientFilePath))
                 {
                     streamWriter.Write(stringBuilder);
                 }

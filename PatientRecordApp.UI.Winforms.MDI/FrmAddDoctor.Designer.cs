@@ -1,6 +1,6 @@
 ﻿namespace PatientRecordApp.UI.Winforms.MDI
 {
-    partial class FrmAddPatient
+    partial class FrmAddDoctor
     {
         /// <summary>
         /// Required designer variable.
@@ -91,12 +91,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.GbGender);
-            this.groupBox1.Location = new System.Drawing.Point(12, 56);
+            this.groupBox1.Location = new System.Drawing.Point(12, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(434, 499);
-            this.groupBox1.TabIndex = 102;
+            this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Patient Information";
+            this.groupBox1.Text = "Doctor Information";
             // 
             // label13
             // 
@@ -270,7 +270,6 @@
             this.BtnSave.TabIndex = 15;
             this.BtnSave.Text = "Save";
             this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // TxtSurname
             // 
@@ -289,11 +288,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 58);
+            this.label3.Location = new System.Drawing.Point(51, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 100;
-            this.label3.Text = "SurName:";
+            this.label3.Text = "LastName:";
             // 
             // label2
             // 
@@ -345,7 +344,7 @@
             this.RdoMale.Text = "Male";
             this.RdoMale.UseVisualStyleBackColor = true;
             // 
-            // FrmAddPatient
+            // FrmAddDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -356,9 +355,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmAddPatient";
-            this.Text = "Patient Information";
-            this.TopMost = true;
+            this.Name = "FrmAddDoctor";
+            this.Text = "Doctor Information";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.GbGender.ResumeLayout(false);
@@ -370,15 +368,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button BtnSave;
-        private System.Windows.Forms.TextBox TxtSurname;
-        private System.Windows.Forms.TextBox TxtFirstName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox GbGender;
-        private System.Windows.Forms.RadioButton RdoFemale;
-        private System.Windows.Forms.RadioButton RdoMale;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox CboDoctor;
         private System.Windows.Forms.TextBox TxtDiagnosis;
@@ -399,5 +388,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtAddress1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button BtnSave;
+        private System.Windows.Forms.TextBox TxtSurname;
+        private System.Windows.Forms.TextBox TxtFirstName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox GbGender;
+        private System.Windows.Forms.RadioButton RdoFemale;
+        private System.Windows.Forms.RadioButton RdoMale;
     }
 }

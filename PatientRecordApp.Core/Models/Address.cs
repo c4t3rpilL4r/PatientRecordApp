@@ -1,4 +1,10 @@
-﻿namespace PatientRecordApp.Core.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PatientRecordApp.Core.Models
 {
     public class Address
     {
@@ -8,6 +14,6 @@
         public string City { get; set; }
         public string Province { get; set; }
         public string Country { get; set; }
-        public int Zipcode { get; set; }
+        public int ZipCode { get; set; }
     }
 }

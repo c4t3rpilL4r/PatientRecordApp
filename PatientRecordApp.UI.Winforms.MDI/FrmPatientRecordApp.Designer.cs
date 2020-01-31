@@ -63,14 +63,14 @@
             // patientToolStripMenuItem
             // 
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
-            this.patientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.patientToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.patientToolStripMenuItem.Text = "Patient";
             this.patientToolStripMenuItem.Click += new System.EventHandler(this.patientToolStripMenuItem_Click);
             // 
             // doctorToolStripMenuItem
             // 
             this.doctorToolStripMenuItem.Name = "doctorToolStripMenuItem";
-            this.doctorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doctorToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.doctorToolStripMenuItem.Text = "Doctor";
             this.doctorToolStripMenuItem.Click += new System.EventHandler(this.doctorToolStripMenuItem_Click);
             // 
@@ -86,13 +86,13 @@
             // patientToolStripMenuItem1
             // 
             this.patientToolStripMenuItem1.Name = "patientToolStripMenuItem1";
-            this.patientToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.patientToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.patientToolStripMenuItem1.Text = "Patient";
             // 
             // doctorToolStripMenuItem1
             // 
             this.doctorToolStripMenuItem1.Name = "doctorToolStripMenuItem1";
-            this.doctorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.doctorToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.doctorToolStripMenuItem1.Text = "Doctor";
             // 
             // settingsToolStripMenuItem
@@ -105,14 +105,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(800, 613);
             this.Controls.Add(this.MnsPatientRecord);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MnsPatientRecord;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPatientRecordApp";
-            this.Text = "Patient Information";
+            this.Text = "Patient Record App";
+            this.Load += new System.EventHandler(this.FrmPatientRecordApp_Load);
             this.MnsPatientRecord.ResumeLayout(false);
             this.MnsPatientRecord.PerformLayout();
             this.ResumeLayout(false);
