@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace PatientRecordApp.Core.Managers.Interfaces
 {
-	public interface ICSVManager
-	{
-		bool Create(Patient patient);
-		IList<Patient> Read();
-		bool Update(Patient oldPatientRecord, Patient newPatientRecordt);
-		bool Delete(List<Patient> patients);
-		IList<Patient> RetrieveDataThroughSearchFilters(string name, string gender, string dateOfConsultation, string diagnosis);
-	}
+    public interface ICSVManager
+    {
+        bool Create(Patient patient);
+        IList<Patient> Read();
+        bool Update(Patient oldPatientRecord, Patient newPatientRecordt);
+        bool Delete(List<Patient> patients);
+        IList<Patient> Search(SearchFilters filters);
+    }
 }

@@ -47,7 +47,7 @@ namespace PatientRecordApp.Core.Repositories
 
         public bool Update(Patient oldPatientRecord, Patient newPatientRecord)
         {
-            _patientList.Remove(_patientList.FirstOrDefault(patient => patient.isEqual(oldPatientRecord)));
+            _patientList.Remove(_patientList.FirstOrDefault(patient => patient.Id == oldPatientRecord.Id));
 
             _patientList.Add(newPatientRecord);
 
@@ -58,23 +58,23 @@ namespace PatientRecordApp.Core.Repositories
         {
             patients.ForEach(tobeRemove =>
             {
-                _patientList.Remove(_patientList.FirstOrDefault(patient => patient.isEqual(tobeRemove)));
+                _patientList.Remove(_patientList.FirstOrDefault(patient => patient.Id == tobeRemove.Id));
             });
 
             return WriteIntoCSVFile();
         }
 
-        public IList<Patient> RetrieveDataThroughSearchFilters(string name, string gender, string dateOfConsultation, string diagnosis)
+        public IList<Patient> Search(SearchFilters filters)
         {
             var patientList = _patientList;
             var searchList = new List<Patient>();
 
-            if (!string.IsNullOrWhiteSpace(name))
+            if (!string.IsNullOrWhiteSpace(filters.FullName))
             {
                 foreach (Patient patient in patientList)
                 {
                     var counter = 0;
-                    var nameSplit = name.Split(' ');
+                    var nameSplit = filters.FullName.Split(' ');
                     var fullName = $"{patient.FirstName} {patient.Surname}";
 
                     foreach (var split in nameSplit)
@@ -96,11 +96,11 @@ namespace PatientRecordApp.Core.Repositories
                 searchList = new List<Patient>();
             }
 
-            if (!string.IsNullOrWhiteSpace(gender))
+            if (!string.IsNullOrWhiteSpace(filters.Gender))
             {
                 foreach (Patient patient in patientList)
                 {
-                    if (patient.Gender.Equals(gender))
+                    if (patient.Gender.Equals(filters.Gender))
                     {
                         searchList.Add(patient);
                     }
@@ -110,11 +110,11 @@ namespace PatientRecordApp.Core.Repositories
                 searchList = new List<Patient>();
             }
 
-            if (!string.IsNullOrWhiteSpace(dateOfConsultation))
+            if (!string.IsNullOrWhiteSpace(filters.DateOfConsultation))
             {
                 foreach (Patient patient in patientList)
                 {
-                    if (patient.DateOfConsultation.Date.ToString().Contains(dateOfConsultation))
+                    if (patient.DateOfConsultation.Date.ToString().Contains(filters.DateOfConsultation))
                     {
                         searchList.Add(patient);
                     }
@@ -124,11 +124,11 @@ namespace PatientRecordApp.Core.Repositories
                 searchList = new List<Patient>();
             }
 
-            if (!string.IsNullOrWhiteSpace(diagnosis))
+            if (!string.IsNullOrWhiteSpace(filters.Diagnosis))
             {
                 foreach (Patient patient in patientList)
                 {
-                    if (patient.Diagnosis.Equals(diagnosis))
+                    if (patient.Diagnosis.Equals(filters.Diagnosis))
                     {
                         searchList.Add(patient);
                     }

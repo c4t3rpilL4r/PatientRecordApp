@@ -169,6 +169,9 @@
             this.ClientSize = new System.Drawing.Size(422, 265);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmAddEditPatient";
             this.Text = "Patient Service";
             this.Load += new System.EventHandler(this.FrmAddEditPatient_Load);
