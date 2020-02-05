@@ -1,6 +1,4 @@
-﻿using PatientRecordApp.Core.Managers;
-using PatientRecordApp.Core.Managers.Interfaces;
-using PatientRecordApp.Core.Models;
+﻿using PatientRecordApp.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
