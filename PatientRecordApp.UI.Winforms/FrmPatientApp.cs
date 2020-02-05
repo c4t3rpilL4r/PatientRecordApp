@@ -1,4 +1,6 @@
-﻿using PatientRecordApp.Core.Models;
+﻿using PatientRecordApp.Core.Managers.CSV;
+using PatientRecordApp.Core.Managers.CSV.Interfaces;
+using PatientRecordApp.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +10,13 @@ namespace PatientRecordApp.UI.Winforms
 {
     public partial class FrmPatientApp : Form
     {
-        private readonly ICSVManager _manager;
+        private readonly IPatientManager _manager;
         private readonly IList<Patient> _patientList;
         private static bool _resetFlag;
 
         public FrmPatientApp()
         {
-            _manager = new CSVBaseManager();
+            _manager = new PatientManager();
             _patientList = _manager.Read();
             _resetFlag = false;
             InitializeComponent();

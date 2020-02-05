@@ -27,6 +27,12 @@ namespace PatientRecordApp.UI.Winforms.MDI
             OpenForm(form);
         }
 
+        private void settingsToolStripMenuItem1_Click(object sender, System.EventArgs e)
+        {
+            var form = new FrmSettings();
+            OpenForm(form);
+        }
+
         private void OpenForm(Form form)
         {
             var child = MdiChildren.FirstOrDefault(frm => frm.Name.Equals(form.Name));

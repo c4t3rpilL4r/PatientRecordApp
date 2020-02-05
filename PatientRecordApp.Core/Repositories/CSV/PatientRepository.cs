@@ -51,10 +51,15 @@ namespace PatientRecordApp.Core.Repositories.CSV
                         Age = int.Parse(patient[4]),
                         ContactNumber = int.Parse(patient[5]),
                         EmailAddress = patient[6],
-                        AddressId = int.Parse(patient[7]),
-                        DateOfConsultation = DateTime.Parse(patient[8]),
-                        Diagnosis = patient[9],
-                        DoctorId = int.Parse(patient[10])
+                        Address1 = patient[7],
+                        Address2 = patient[8],
+                        City = patient[9],
+                        Province = patient[10],
+                        Country = patient[11],
+                        ZipCode = int.Parse(patient[12]),
+                        DateOfConsultation = DateTime.Parse(patient[13]),
+                        Diagnosis = patient[14],
+                        DoctorId = int.Parse(patient[15])
                     });
                 }
             }

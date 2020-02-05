@@ -11,7 +11,12 @@ namespace PatientRecordApp.Core.Models
         public int Age { get; set; }
         public int ContactNumber { get; set; }
         public string EmailAddress { get; set; }
-        public int AddressId { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string Province { get; set; }
+        public string Country { get; set; }
+        public int ZipCode { get; set; }
         public DateTime DateOfConsultation { get; set; }
         public string Diagnosis { get; set; }
         public int DoctorId { get; set; }

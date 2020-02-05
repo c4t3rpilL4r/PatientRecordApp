@@ -11,7 +11,6 @@ namespace PatientRecordApp.UI.Winforms.MDI
     public partial class FrmAddPatient : Form
     {
         private IPatientManager _patientManager;
-        private IAddressManager _addressManager;
         private IDoctorManager _doctorManager;
 
         private IList<Doctor> _doctorList;
@@ -19,7 +18,6 @@ namespace PatientRecordApp.UI.Winforms.MDI
         public FrmAddPatient()
         {
             _patientManager = new PatientManager();
-            _addressManager = new AddressManager();
             _doctorManager = new DoctorManager();
             _doctorList = _doctorManager.Read();
             InitializeComponent();
@@ -44,7 +42,24 @@ namespace PatientRecordApp.UI.Winforms.MDI
                 && !string.IsNullOrWhiteSpace(TxtDiagnosis.Text)
                 && CboDoctor.SelectedIndex != -1)
             {
+                var isSuccessful = _patientManager.Create(new Patient()
+                {
+                    FirstName = TxtFirstName.Text,
+                    Surname = TxtSurname.Text,
+                    Gender = RdoMale.Checked ? "Male" : "Female",
+                    Age = int.Parse(TxtAge.Text),
+                    Address1 = TxtAddress1.Text,
+                    Address2 = TxtAddress2.Text,
+                    City = TxtCity.Text,
+                    Province = TxtProvince.Text,
+                    Country = TxtCountry.Text,
+                    ZipCode = int.Parse(TxtZipCode.Text),
+                    ContactNumber = int.Parse(TxtContactNumber.Text),
+                    EmailAddress = TxtEmailAddress.Text,
+                    Diagnosis = TxtDiagnosis.Text
+                });
 
+                MessageBox.Show(isSuccessful ? "Patient adding successful." : "Patient adding failed."); ;
             }
         }
 

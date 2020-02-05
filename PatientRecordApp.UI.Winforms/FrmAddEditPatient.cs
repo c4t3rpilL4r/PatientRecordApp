@@ -1,4 +1,6 @@
-﻿using PatientRecordApp.Core.Models;
+﻿using PatientRecordApp.Core.Managers.CSV;
+using PatientRecordApp.Core.Managers.CSV.Interfaces;
+using PatientRecordApp.Core.Models;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -7,12 +9,12 @@ namespace PatientRecordApp.UI.Winforms
 {
     public partial class FrmAddEditPatient : Form
     {
-        private ICSVManager _manager;
+        private IPatientManager _manager;
         private Patient _patient;
 
         public FrmAddEditPatient(Patient patient = null)
         {
-            _manager = new CSVBaseManager();
+            _manager = new PatientManager();
             _patient = patient;
             InitializeComponent();
         }
