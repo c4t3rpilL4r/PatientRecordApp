@@ -1,34 +1,66 @@
 ﻿using PatientRecordApp.Core.Models;
 using PatientRecordApp.Core.Repositories.CSV.Interfaces;
-using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
 
 namespace PatientRecordApp.Core.Repositories.CSV
 {
     public class DoctorRepository : BaseRepository<Doctor>, IDoctorRepository
     {
-        protected override string FilePath => throw new NotImplementedException();
+        protected override string FilePath => ConfigurationManager.AppSettings["PatientCSVPath"];
+        protected override IList<Doctor> DataList => _doctorList;
 
-        protected override IList<Doctor> DataList => throw new NotImplementedException();
+        private static IList<Doctor> _doctorList = new List<Doctor>();
 
         public bool Create(Doctor data)
         {
-            throw new NotImplementedException();
+            _doctorList.Add(data);
+
+            return WriteIntoCSVFile();
         }
 
         public bool Delete(List<Doctor> dataList)
         {
-            throw new NotImplementedException();
+            dataList.ForEach(tobeRemove =>
+            {
+                _doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == tobeRemove.Id));
+            });
+
+            return WriteIntoCSVFile();
         }
 
         public IList<Doctor> Read()
         {
-            throw new NotImplementedException();
+            if (_doctorList.Count == 0)
+            {
+                var doctorData = File.ReadAllLines(FilePath);
+
+                foreach (var line in doctorData)
+                {
+                    var doctor = line.Split(',');
+
+                    _doctorList.Add(new Doctor()
+                    {
+                        Id = int.Parse(doctor[0]),
+                        FirstName = doctor[1],
+                        LastName = doctor[2],
+                        Department = doctor[3]
+                    });
+                }
+            }
+
+            return _doctorList;
         }
 
         public bool Update(Doctor oldData, Doctor newData)
         {
-            throw new NotImplementedException();
+            _doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == oldData.Id));
+
+            _doctorList.Add(newData);
+
+            return WriteIntoCSVFile();
         }
     }
 }

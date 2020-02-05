@@ -8,11 +8,12 @@ namespace PatientRecordApp.Core.Models
         public string Surname { get; set; }
         public string FirstName { get; set; }
         public string Gender { get; set; }
-        public int MobileNumber { get; set; }
+        public int Age { get; set; }
+        public int ContactNumber { get; set; }
         public string EmailAddress { get; set; }
-        public Address Address { get; set; }
+        public int AddressId { get; set; }
         public DateTime DateOfConsultation { get; set; }
         public string Diagnosis { get; set; }
-        public Doctor Doctor { get; set; }
+        public int DoctorId { get; set; }
     }
 }

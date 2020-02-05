@@ -9,3 +9,6 @@ D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmAddPatient.resources
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmPatientRecordApp.resources
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmAddDoctor.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\bin\Debug\PatientRecordApp.Core.dll
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\bin\Debug\PatientRecordApp.Core.pdb
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.csproj.CopyComplete

@@ -11,7 +11,7 @@ namespace PatientRecordApp.Core.Repositories.CSV
         protected abstract string FilePath { get; }
         protected abstract IList<T> DataList { get; }
 
-        private bool WriteIntoCSVFile()
+        public bool WriteIntoCSVFile()
         {
             try
             {

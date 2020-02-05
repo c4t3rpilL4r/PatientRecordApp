@@ -38,9 +38,8 @@ namespace PatientRecordApp.UI.Winforms.MDI
             else
             {
                 form.Show();
+                form.MdiParent = this;
             }
-
-            form.MdiParent = this;
         }
     }
 }

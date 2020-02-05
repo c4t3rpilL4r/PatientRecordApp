@@ -114,6 +114,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmPatientRecordApp";
             this.Text = "Patient Record App";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPatientRecordApp_Load);
             this.MnsPatientRecord.ResumeLayout(false);
             this.MnsPatientRecord.PerformLayout();
