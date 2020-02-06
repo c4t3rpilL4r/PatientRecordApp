@@ -1,15 +1,20 @@
-﻿using PatientRecordApp.Core.Models;
+﻿using PatientRecordApp.Core.Constants;
+using PatientRecordApp.Core.Models;
 using PatientRecordApp.Core.Repositories.CSV.Interfaces;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace PatientRecordApp.Core.Repositories.CSV
 {
     public class DoctorRepository : BaseRepository<Doctor>, IDoctorRepository
     {
-        protected override string FilePath => ConfigurationManager.AppSettings["PatientCSVPath"];
+        protected override string FilePath => XDocument.Load(Path.Combine(Directory.GetCurrentDirectory(), "settings.xml"))
+            .Element(SettingsXMLElement.SETTINGS)
+            .Element(SettingsXMLElement.FILEPATH)
+            .Element(SettingsXMLElement.DOCTORCSV)
+            .Value;
         protected override IList<Doctor> DataList => _doctorList;
 
         private static IList<Doctor> _doctorList = new List<Doctor>();

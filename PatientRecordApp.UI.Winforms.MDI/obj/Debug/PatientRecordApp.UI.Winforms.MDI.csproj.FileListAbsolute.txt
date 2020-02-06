@@ -13,3 +13,5 @@ D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\bin\Debug\PatientRecordApp.
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\bin\Debug\PatientRecordApp.Core.pdb
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.csproj.CopyComplete
 D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmSettings.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmViewDoctor.resources
+D:\PatientRecordApp\PatientRecordApp.UI.Winforms.MDI\obj\Debug\PatientRecordApp.UI.Winforms.MDI.FrmViewPatient.resources

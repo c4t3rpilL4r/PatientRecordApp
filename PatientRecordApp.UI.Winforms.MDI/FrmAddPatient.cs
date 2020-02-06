@@ -1,10 +1,13 @@
-﻿using PatientRecordApp.Core.Managers.CSV;
+﻿using PatientRecordApp.Core.Constants;
+using PatientRecordApp.Core.Managers.CSV;
 using PatientRecordApp.Core.Managers.CSV.Interfaces;
 using PatientRecordApp.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace PatientRecordApp.UI.Winforms.MDI
 {
@@ -42,8 +45,17 @@ namespace PatientRecordApp.UI.Winforms.MDI
                 && !string.IsNullOrWhiteSpace(TxtDiagnosis.Text)
                 && CboDoctor.SelectedIndex != -1)
             {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "settings.xml");
+                var xmlDocument = XDocument.Load(path);
+                var patientId = int.Parse(xmlDocument.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.ID).Element(SettingsXMLElement.PATIENT).Value) + 1;
+
+                var selectedDoctor = CboDoctor.SelectedItem.ToString().Replace("Dr. ", string.Empty).Replace(",", string.Empty);
+
+                var doctor = _doctorList.FirstOrDefault(x => selectedDoctor.Contains(x.FirstName) && selectedDoctor.Contains(x.LastName) && selectedDoctor.Contains(x.Department));
+
                 var isSuccessful = _patientManager.Create(new Patient()
                 {
+                    Id = patientId,
                     FirstName = TxtFirstName.Text,
                     Surname = TxtSurname.Text,
                     Gender = RdoMale.Checked ? "Male" : "Female",
@@ -54,12 +66,28 @@ namespace PatientRecordApp.UI.Winforms.MDI
                     Province = TxtProvince.Text,
                     Country = TxtCountry.Text,
                     ZipCode = int.Parse(TxtZipCode.Text),
-                    ContactNumber = int.Parse(TxtContactNumber.Text),
+                    ContactNumber = TxtContactNumber.Text,
                     EmailAddress = TxtEmailAddress.Text,
-                    Diagnosis = TxtDiagnosis.Text
+                    DateOfConsultation = DateTime.Now,
+                    Diagnosis = TxtDiagnosis.Text,
+                    DoctorId = doctor.Id
                 });
 
-                MessageBox.Show(isSuccessful ? "Patient adding successful." : "Patient adding failed."); ;
+                if (isSuccessful)
+                {
+                    xmlDocument.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.ID).Element(SettingsXMLElement.PATIENT).Value = patientId.ToString();
+                    xmlDocument.Save(path);
+
+                    MessageBox.Show("Patient adding successful.");
+                }
+                else
+                {
+                    MessageBox.Show("Patient adding failed.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all details.");
             }
         }
 

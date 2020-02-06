@@ -1,16 +1,21 @@
-﻿using PatientRecordApp.Core.Models;
+﻿using PatientRecordApp.Core.Constants;
+using PatientRecordApp.Core.Models;
 using PatientRecordApp.Core.Repositories.CSV.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace PatientRecordApp.Core.Repositories.CSV
 {
     public class PatientRepository : BaseRepository<Patient>, IPatientRepository
     {
-        protected override string FilePath => ConfigurationManager.AppSettings["PatientCSVPath"];
+        protected override string FilePath => XDocument.Load(Path.Combine(Directory.GetCurrentDirectory(), "settings.xml"))
+            .Element(SettingsXMLElement.SETTINGS)
+            .Element(SettingsXMLElement.FILEPATH)
+            .Element(SettingsXMLElement.PATIENTCSV)
+            .Value;
         protected override IList<Patient> DataList => _patientList;
 
         private static IList<Patient> _patientList = new List<Patient>();
@@ -49,14 +54,14 @@ namespace PatientRecordApp.Core.Repositories.CSV
                         FirstName = patient[2],
                         Gender = patient[3],
                         Age = int.Parse(patient[4]),
-                        ContactNumber = int.Parse(patient[5]),
-                        EmailAddress = patient[6],
-                        Address1 = patient[7],
-                        Address2 = patient[8],
-                        City = patient[9],
-                        Province = patient[10],
-                        Country = patient[11],
-                        ZipCode = int.Parse(patient[12]),
+                        Address1 = patient[5],
+                        Address2 = patient[6],
+                        City = patient[7],
+                        Province = patient[8],
+                        Country = patient[9],
+                        ZipCode = int.Parse(patient[10]),
+                        ContactNumber = patient[11],
+                        EmailAddress = patient[12],
                         DateOfConsultation = DateTime.Parse(patient[13]),
                         Diagnosis = patient[14],
                         DoctorId = int.Parse(patient[15])

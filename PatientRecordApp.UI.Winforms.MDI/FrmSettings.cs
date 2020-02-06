@@ -1,6 +1,5 @@
 ﻿using PatientRecordApp.Core.Constants;
 using System;
-using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -9,7 +8,7 @@ namespace PatientRecordApp.UI.Winforms.MDI
 {
     public partial class FrmSettings : Form
     {
-        private readonly static string _filePath = ConfigurationManager.AppSettings["SettingsXMLPath"];
+        private readonly static string _filePath = Path.Combine(Directory.GetCurrentDirectory(), "settings.xml");
         private readonly XDocument _xmlLoad;
 
         public FrmSettings()
@@ -20,9 +19,13 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
         private void FrmSettings_Load(object sender, System.EventArgs e)
         {
-            TxtHospitalName.Text = _xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.HOSPITALNAME).Value;
-            TxtPatientCSVPath.Text = _xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.FILEPATH).Element(SettingsXMLElement.PATIENTCSV).Value;
-            TxtDoctorCSVPath.Text = _xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.FILEPATH).Element(SettingsXMLElement.DOCTORCSV).Value;
+            var hospitalName = _xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.HOSPITALNAME).Value;
+            var patientCsv = _xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.FILEPATH).Element(SettingsXMLElement.PATIENTCSV).Value;
+            var doctorCsv = _xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.FILEPATH).Element(SettingsXMLElement.DOCTORCSV).Value;
+
+            TxtHospitalName.Text = hospitalName;
+            TxtPatientCSVPath.Text = patientCsv;
+            TxtDoctorCSVPath.Text = doctorCsv;
         }
 
         private void BtnPatientCSVBrowse_Click(object sender, EventArgs e) => TxtPatientCSVPath.Text = GetCSVPathDirectory();

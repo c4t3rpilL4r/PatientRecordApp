@@ -1,6 +1,4 @@
 ﻿using PatientRecordApp.Core.Constants;
-using PatientRecordApp.UI.Winforms.MDI.Helpers;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,8 +8,6 @@ namespace PatientRecordApp.UI.Winforms.MDI
 {
     public partial class FrmPatientRecordApp : Form
     {
-        private readonly string _settingsFilePath = ConfigurationManager.AppSettings["SettingsXMLPath"];
-
         public FrmPatientRecordApp()
         {
             InitializeComponent();
@@ -19,15 +15,30 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
         private new void FrmPatientRecordApp_Activated(object sender, System.EventArgs e)
         {
-            if (!File.Exists(_settingsFilePath))
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "settings.xml");
+
+            if (!File.Exists(path))
             {
-                SettingsHelper.Write(_settingsFilePath);
+                var xml = new XElement(SettingsXMLElement.SETTINGS);
+                var hospitalName = new XElement(SettingsXMLElement.HOSPITALNAME, string.Empty);
+
+                var paths = new XElement(SettingsXMLElement.FILEPATH);
+                paths.Add(new XElement(SettingsXMLElement.PATIENTCSV, @"D:\PatientRecordApp\PatientRecordApp.Core\CSV\patients.csv"));
+                paths.Add(new XElement(SettingsXMLElement.DOCTORCSV, @"D:\PatientRecordApp\PatientRecordApp.Core\CSV\doctors.csv"));
+
+                var ids = new XElement(SettingsXMLElement.ID);
+                ids.Add(new XElement(SettingsXMLElement.PATIENT, 0));
+                ids.Add(new XElement(SettingsXMLElement.DOCTOR, 0));
+
+                xml.Add(hospitalName);
+                xml.Add(paths);
+                xml.Add(ids);
+
+                xml.Save(path);
             }
-            else // would experience error most of the time if removed ... don't know why
-            {
-                var xmlLoad = XDocument.Load(_settingsFilePath);
-                this.Text = xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.HOSPITALNAME).Value;
-            }
+
+            var xmlLoad = XDocument.Load(path);
+            this.Text = xmlLoad.Element(SettingsXMLElement.SETTINGS).Element(SettingsXMLElement.HOSPITALNAME).Value;
         }
 
         private void patientToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -45,6 +56,18 @@ namespace PatientRecordApp.UI.Winforms.MDI
         private void settingsToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
             var form = new FrmSettings();
+            OpenForm(form);
+        }
+
+        private void patientsToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var form = new FrmViewPatient();
+            OpenForm(form);
+        }
+
+        private void doctorsToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var form = new FrmViewDoctor();
             OpenForm(form);
         }
 

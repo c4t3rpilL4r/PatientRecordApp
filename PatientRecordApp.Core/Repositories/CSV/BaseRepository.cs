@@ -19,9 +19,9 @@ namespace PatientRecordApp.Core.Repositories.CSV
 
                 foreach (T listData in DataList)
                 {
-                    var value = listData.GetType().GetProperties().Select(x => x.GetValue(listData)).ToString();
+                    var value = listData.GetType().GetProperties().Select(x => x.GetValue(listData).ToString());
 
-                    var data = string.Join(",", value);
+                    var data = string.Join(",", value.Append(Environment.NewLine));
 
                     stringBuilder.Append(data);
                 }

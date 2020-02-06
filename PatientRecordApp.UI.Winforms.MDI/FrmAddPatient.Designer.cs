@@ -107,7 +107,7 @@
             this.TxtAge.Location = new System.Drawing.Point(146, 115);
             this.TxtAge.Name = "TxtAge";
             this.TxtAge.Size = new System.Drawing.Size(135, 20);
-            this.TxtAge.TabIndex = 101;
+            this.TxtAge.TabIndex = 5;
             this.TxtAge.TextChanged += new System.EventHandler(this.TxtAge_TextChanged);
             // 
             // label14
@@ -116,7 +116,7 @@
             this.label14.Location = new System.Drawing.Point(109, 118);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
-            this.label14.TabIndex = 102;
+            this.label14.TabIndex = 100;
             this.label14.Text = "Age:";
             // 
             // label13
@@ -135,7 +135,7 @@
             this.CboDoctor.Location = new System.Drawing.Point(146, 450);
             this.CboDoctor.Name = "CboDoctor";
             this.CboDoctor.Size = new System.Drawing.Size(271, 21);
-            this.CboDoctor.TabIndex = 14;
+            this.CboDoctor.TabIndex = 15;
             // 
             // TxtDiagnosis
             // 
@@ -143,7 +143,7 @@
             this.TxtDiagnosis.Multiline = true;
             this.TxtDiagnosis.Name = "TxtDiagnosis";
             this.TxtDiagnosis.Size = new System.Drawing.Size(271, 45);
-            this.TxtDiagnosis.TabIndex = 13;
+            this.TxtDiagnosis.TabIndex = 14;
             // 
             // label5
             // 
@@ -168,7 +168,7 @@
             this.TxtEmailAddress.Location = new System.Drawing.Point(146, 373);
             this.TxtEmailAddress.Name = "TxtEmailAddress";
             this.TxtEmailAddress.Size = new System.Drawing.Size(271, 20);
-            this.TxtEmailAddress.TabIndex = 12;
+            this.TxtEmailAddress.TabIndex = 13;
             // 
             // label11
             // 
@@ -184,7 +184,7 @@
             this.TxtContactNumber.Location = new System.Drawing.Point(146, 347);
             this.TxtContactNumber.Name = "TxtContactNumber";
             this.TxtContactNumber.Size = new System.Drawing.Size(271, 20);
-            this.TxtContactNumber.TabIndex = 11;
+            this.TxtContactNumber.TabIndex = 12;
             // 
             // label10
             // 
@@ -200,7 +200,7 @@
             this.TxtZipCode.Location = new System.Drawing.Point(146, 321);
             this.TxtZipCode.Name = "TxtZipCode";
             this.TxtZipCode.Size = new System.Drawing.Size(135, 20);
-            this.TxtZipCode.TabIndex = 10;
+            this.TxtZipCode.TabIndex = 11;
             // 
             // label9
             // 
@@ -216,7 +216,7 @@
             this.TxtCountry.Location = new System.Drawing.Point(146, 295);
             this.TxtCountry.Name = "TxtCountry";
             this.TxtCountry.Size = new System.Drawing.Size(271, 20);
-            this.TxtCountry.TabIndex = 9;
+            this.TxtCountry.TabIndex = 10;
             // 
             // label8
             // 
@@ -232,7 +232,7 @@
             this.TxtProvince.Location = new System.Drawing.Point(146, 269);
             this.TxtProvince.Name = "TxtProvince";
             this.TxtProvince.Size = new System.Drawing.Size(271, 20);
-            this.TxtProvince.TabIndex = 8;
+            this.TxtProvince.TabIndex = 9;
             // 
             // label7
             // 
@@ -248,7 +248,7 @@
             this.TxtCity.Location = new System.Drawing.Point(146, 243);
             this.TxtCity.Name = "TxtCity";
             this.TxtCity.Size = new System.Drawing.Size(271, 20);
-            this.TxtCity.TabIndex = 7;
+            this.TxtCity.TabIndex = 8;
             // 
             // TxtAddress2
             // 
@@ -256,7 +256,7 @@
             this.TxtAddress2.Multiline = true;
             this.TxtAddress2.Name = "TxtAddress2";
             this.TxtAddress2.Size = new System.Drawing.Size(271, 45);
-            this.TxtAddress2.TabIndex = 6;
+            this.TxtAddress2.TabIndex = 7;
             // 
             // label6
             // 
@@ -273,7 +273,7 @@
             this.TxtAddress1.Multiline = true;
             this.TxtAddress1.Name = "TxtAddress1";
             this.TxtAddress1.Size = new System.Drawing.Size(271, 45);
-            this.TxtAddress1.TabIndex = 5;
+            this.TxtAddress1.TabIndex = 6;
             // 
             // label4
             // 
@@ -289,7 +289,7 @@
             this.BtnSave.Location = new System.Drawing.Point(180, 481);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(75, 23);
-            this.BtnSave.TabIndex = 15;
+            this.BtnSave.TabIndex = 16;
             this.BtnSave.Text = "Save";
             this.BtnSave.UseVisualStyleBackColor = true;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);

@@ -78,6 +78,18 @@
     <Compile Include="FrmSettings.Designer.cs">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmViewDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmViewDoctor.Designer.cs">
+      <DependentUpon>FrmViewDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmViewPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmViewPatient.Designer.cs">
+      <DependentUpon>FrmViewPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmViewDoctor.resx">
+      <DependentUpon>FrmViewDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmViewPatient.resx">
+      <DependentUpon>FrmViewPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -132,6 +150,10 @@
       <Project>{0665b7c9-0354-4bb0-b7f6-98d96e2f9d8f}</Project>
       <Name>PatientRecordApp.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\settings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
