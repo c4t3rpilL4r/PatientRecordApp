@@ -35,9 +35,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TxtDoctorCSVPath = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BtnPatientCSVBrowse = new System.Windows.Forms.Button();
-            this.BtnDoctorCSVBrowse = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.BtnDoctorCSVBrowse = new System.Windows.Forms.Button();
+            this.BtnPatientCSVBrowse = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,14 +109,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             // 
-            // BtnPatientCSVBrowse
+            // btnSave
             // 
-            this.BtnPatientCSVBrowse.Location = new System.Drawing.Point(360, 56);
-            this.BtnPatientCSVBrowse.Name = "BtnPatientCSVBrowse";
-            this.BtnPatientCSVBrowse.Size = new System.Drawing.Size(75, 23);
-            this.BtnPatientCSVBrowse.TabIndex = 6;
-            this.BtnPatientCSVBrowse.Text = "Browse";
-            this.BtnPatientCSVBrowse.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(183, 160);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // BtnDoctorCSVBrowse
             // 
@@ -126,15 +127,17 @@
             this.BtnDoctorCSVBrowse.TabIndex = 7;
             this.BtnDoctorCSVBrowse.Text = "Browse";
             this.BtnDoctorCSVBrowse.UseVisualStyleBackColor = true;
+            this.BtnDoctorCSVBrowse.Click += new System.EventHandler(this.BtnDoctorCSVBrowse_Click);
             // 
-            // btnSave
+            // BtnPatientCSVBrowse
             // 
-            this.btnSave.Location = new System.Drawing.Point(183, 160);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.BtnPatientCSVBrowse.Location = new System.Drawing.Point(360, 56);
+            this.BtnPatientCSVBrowse.Name = "BtnPatientCSVBrowse";
+            this.BtnPatientCSVBrowse.Size = new System.Drawing.Size(75, 23);
+            this.BtnPatientCSVBrowse.TabIndex = 6;
+            this.BtnPatientCSVBrowse.Text = "Browse";
+            this.BtnPatientCSVBrowse.UseVisualStyleBackColor = true;
+            this.BtnPatientCSVBrowse.Click += new System.EventHandler(this.BtnPatientCSVBrowse_Click);
             // 
             // FrmSettings
             // 
@@ -147,6 +150,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmSettings";
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.FrmSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

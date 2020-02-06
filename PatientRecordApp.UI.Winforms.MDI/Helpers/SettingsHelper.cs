@@ -1,34 +1,28 @@
-﻿using System.IO;
+﻿using PatientRecordApp.Core.Constants;
 using System.Xml.Linq;
 
 namespace PatientRecordApp.UI.Winforms.MDI.Helpers
 {
-    public class SettingsHelper
+    public static class SettingsHelper
     {
-        public static string _hospitalName = string.Empty;
-        public static string _patientCSVPath = string.Empty;
-        public static string _doctorCSVPath = string.Empty;
-        public static int _patientId = 0;
-        public static int _doctorId = 0;
-
-        public static void Save()
+        public static void Write(string filePath)
         {
-            XDocument xmlDocument = new XDocument(
-                new XDeclaration("1.0", "utf-8", "yes"),
-                new XElement("Settings",
-                    new XElement("HospitalName", _hospitalName)
-                ),
-                new XElement("File Path",
-                    new XElement("PatientCSV", _patientCSVPath),
-                    new XElement("DoctorCSV", _doctorCSVPath)
-                ),
-                new XElement("Id",
-                    new XElement("Patient", _patientId),
-                    new XElement("Doctor", _doctorId)
-                )
-            );
+            var xml = new XElement(SettingsXMLElement.SETTINGS);
+            var hospitalName = new XElement(SettingsXMLElement.HOSPITALNAME);
 
-            xmlDocument.Save(Path.Combine(Directory.GetCurrentDirectory(), "Settings.xml"));
+            var paths = new XElement(SettingsXMLElement.FILEPATH);
+            paths.Add(new XElement(SettingsXMLElement.PATIENTCSV), string.Empty);
+            paths.Add(new XElement(SettingsXMLElement.DOCTORCSV), string.Empty);
+
+            var ids = new XElement(SettingsXMLElement.ID);
+            ids.Add(new XElement(SettingsXMLElement.PATIENT), 0);
+            ids.Add(new XElement(SettingsXMLElement.DOCTOR), 0);
+
+            xml.Add(hospitalName);
+            xml.Add(paths);
+            xml.Add(ids);
+
+            xml.Save(filePath);
         }
     }
 }

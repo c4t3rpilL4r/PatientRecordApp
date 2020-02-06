@@ -46,7 +46,6 @@
             this.MnsPatientRecord.Name = "MnsPatientRecord";
             this.MnsPatientRecord.Size = new System.Drawing.Size(800, 24);
             this.MnsPatientRecord.TabIndex = 1;
-            this.MnsPatientRecord.Text = "menuStrip1";
             // 
             // newToolStripMenuItem
             // 
@@ -82,7 +81,7 @@
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
@@ -98,9 +97,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPatientRecordApp";
-            this.Text = "Patient Record App";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmPatientRecordApp_Load);
+            this.Activated += new System.EventHandler(this.FrmPatientRecordApp_Activated);
             this.MnsPatientRecord.ResumeLayout(false);
             this.MnsPatientRecord.PerformLayout();
             this.ResumeLayout(false);
