@@ -3,6 +3,7 @@ using PatientRecordApp.Core.Managers.CSV;
 using PatientRecordApp.Core.Managers.CSV.Interfaces;
 using PatientRecordApp.Core.Models;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -49,6 +50,8 @@ namespace PatientRecordApp.UI.Winforms.MDI
 					xmlDocument.Save(path);
 
 					MessageBox.Show("Doctor adding successful.");
+
+					ResetForm();
 				}
 				else
 				{
@@ -59,6 +62,13 @@ namespace PatientRecordApp.UI.Winforms.MDI
 			{
 				MessageBox.Show("Please fill in all details.");
 			}
+		}
+
+		private void ResetForm()
+		{
+			TxtFirstName.Clear();
+			TxtLastName.Clear();
+			CboDepartment.SelectedIndex = -1;
 		}
 	}
 }

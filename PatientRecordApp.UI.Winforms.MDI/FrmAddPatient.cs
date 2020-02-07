@@ -30,7 +30,15 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
 		private void TxtAge_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
-		private void TxtAge_TextChanged(object sender, EventArgs e) => PopulateComboBoxDoctor();
+		private void TxtAge_TextChanged(object sender, EventArgs e)
+		{
+			PopulateComboBoxDoctor();
+
+			if (CboDoctor.SelectedIndex != -1)
+			{
+				CboDoctor.SelectedIndex = -1;
+			}
+		}
 
 		private void TxtZipCode_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
@@ -85,6 +93,8 @@ namespace PatientRecordApp.UI.Winforms.MDI
 					xmlDocument.Save(path);
 
 					MessageBox.Show("Patient adding successful.");
+
+					ResetForm();
 				}
 				else
 				{
@@ -108,5 +118,22 @@ namespace PatientRecordApp.UI.Winforms.MDI
 				: _doctorList.Select(x => $"Dr. {x.FirstName} {x.LastName}, {x.Department} Department").ToArray());
 		}
 
+		private void ResetForm()
+		{
+			TxtFirstName.Clear();
+			TxtSurname.Clear();
+			RdoMale.Select();
+			TxtAge.Clear();
+			TxtAddress1.Clear();
+			TxtAddress2.Clear();
+			TxtCity.Clear();
+			TxtProvince.Clear();
+			TxtCountry.Clear();
+			TxtZipCode.Clear();
+			TxtContactNumber.Clear();
+			TxtEmailAddress.Clear();
+			TxtDiagnosis.Clear();
+			CboDoctor.SelectedIndex = -1;
+		}
 	}
 }

@@ -30,10 +30,10 @@
         {
             this.LvDoctor = new System.Windows.Forms.ListView();
             this.ColId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColDoctor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColDepartment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColDoctor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // LvDoctor
@@ -47,6 +47,7 @@
             this.LvDoctor.FullRowSelect = true;
             this.LvDoctor.GridLines = true;
             this.LvDoctor.HideSelection = false;
+            this.LvDoctor.LabelEdit = true;
             this.LvDoctor.Location = new System.Drawing.Point(12, 137);
             this.LvDoctor.Name = "LvDoctor";
             this.LvDoctor.Size = new System.Drawing.Size(655, 377);
@@ -58,6 +59,11 @@
             // 
             this.ColId.Text = "";
             this.ColId.Width = 0;
+            // 
+            // ColDoctor
+            // 
+            this.ColDoctor.Text = "Dr.";
+            this.ColDoctor.Width = 50;
             // 
             // ColFirstName
             // 
@@ -74,11 +80,6 @@
             this.ColDepartment.Text = "Department";
             this.ColDepartment.Width = 300;
             // 
-            // ColDoctor
-            // 
-            this.ColDoctor.Text = "Dr.";
-            this.ColDoctor.Width = 50;
-            // 
             // FrmViewDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,7 +89,7 @@
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmViewDoctor";
             this.Text = "View Doctor";
-            this.Load += new System.EventHandler(this.FrmViewDoctor_Load);
+            this.Activated += new System.EventHandler(this.FrmViewDoctor_Activated);
             this.ResumeLayout(false);
 
         }

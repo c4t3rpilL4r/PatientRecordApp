@@ -25,10 +25,7 @@ namespace PatientRecordApp.UI.Winforms.MDI
             InitializeComponent();
         }
 
-        private void FrmViewPatient_Load(object sender, EventArgs e)
-        {
-            DisplayDataInListView(_patientList);
-        }
+        private void FrmViewPatient_Activated(object sender, EventArgs e) => DisplayDataInListView(_patientList);
 
         private void DisplayDataInListView(IList<Patient> patientList)
         {
@@ -56,5 +53,6 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
             LvPatients.Items.AddRange(listViewItemList.ToArray());
         }
+
     }
 }

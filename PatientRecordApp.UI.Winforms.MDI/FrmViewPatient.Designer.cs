@@ -48,7 +48,8 @@
             this.ColDoctor});
             this.LvPatients.FullRowSelect = true;
             this.LvPatients.GridLines = true;
-            this.LvPatients.HideSelection = false;
+            this.LvPatients.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.LvPatients.LabelEdit = true;
             this.LvPatients.Location = new System.Drawing.Point(12, 82);
             this.LvPatients.Name = "LvPatients";
             this.LvPatients.Size = new System.Drawing.Size(854, 439);
@@ -101,7 +102,7 @@
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmViewPatient";
             this.Text = "View Patient";
-            this.Load += new System.EventHandler(this.FrmViewPatient_Load);
+            this.Activated += new System.EventHandler(this.FrmViewPatient_Activated);
             this.ResumeLayout(false);
 
         }

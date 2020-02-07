@@ -20,6 +20,11 @@ namespace PatientRecordApp.Core.Repositories.CSV
 
 		private static IList<Patient> _patientList = new List<Patient>();
 
+		public PatientRepository()
+		{
+			_patientList = Read();
+		}
+
 		public bool Create(Patient data)
 		{
 			_patientList.Add(data);

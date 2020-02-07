@@ -66,6 +66,8 @@
             // 
             // CboDepartment
             // 
+            this.CboDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CboDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CboDepartment.FormattingEnabled = true;
             this.CboDepartment.Location = new System.Drawing.Point(91, 81);
             this.CboDepartment.Name = "CboDepartment";
