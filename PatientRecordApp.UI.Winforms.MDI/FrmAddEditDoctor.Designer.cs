@@ -127,6 +127,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmAddEditDoctor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Doctor Information";
             this.Activated += new System.EventHandler(this.FrmAddEditDoctor_Activated);
             this.groupBox1.ResumeLayout(false);

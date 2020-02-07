@@ -94,25 +94,25 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.CmsDoctor.Name = "CmsDoctor";
-            this.CmsDoctor.Size = new System.Drawing.Size(181, 92);
+            this.CmsDoctor.Size = new System.Drawing.Size(117, 70);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // FrmViewDoctor
@@ -123,6 +123,7 @@
             this.Controls.Add(this.LvDoctor);
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmViewDoctor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Doctor";
             this.Activated += new System.EventHandler(this.FrmViewDoctor_Activated);
             this.CmsDoctor.ResumeLayout(false);
