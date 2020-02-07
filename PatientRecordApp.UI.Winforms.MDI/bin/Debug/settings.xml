@@ -6,7 +6,7 @@
     <DoctorCSV>D:\PatientRecordApp\PatientRecordApp.Core\CSV\doctors.csv</DoctorCSV>
   </FilePath>
   <Id>
-    <Patient>0</Patient>
+    <Patient>2</Patient>
     <Doctor>12</Doctor>
   </Id>
 </Settings>

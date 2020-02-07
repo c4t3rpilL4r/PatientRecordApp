@@ -28,12 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LvDoctor = new System.Windows.Forms.ListView();
             this.ColId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColDoctor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColDepartment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CmsDoctor = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmsDoctor.SuspendLayout();
             this.SuspendLayout();
             // 
             // LvDoctor
@@ -44,6 +50,7 @@
             this.ColFirstName,
             this.ColLastName,
             this.ColDepartment});
+            this.LvDoctor.ContextMenuStrip = this.CmsDoctor;
             this.LvDoctor.FullRowSelect = true;
             this.LvDoctor.GridLines = true;
             this.LvDoctor.HideSelection = false;
@@ -80,6 +87,34 @@
             this.ColDepartment.Text = "Department";
             this.ColDepartment.Width = 300;
             // 
+            // CmsDoctor
+            // 
+            this.CmsDoctor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.CmsDoctor.Name = "CmsDoctor";
+            this.CmsDoctor.Size = new System.Drawing.Size(181, 92);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
             // FrmViewDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +125,7 @@
             this.Name = "FrmViewDoctor";
             this.Text = "View Doctor";
             this.Activated += new System.EventHandler(this.FrmViewDoctor_Activated);
+            this.CmsDoctor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -102,5 +138,9 @@
         private System.Windows.Forms.ColumnHeader ColFirstName;
         private System.Windows.Forms.ColumnHeader ColLastName;
         private System.Windows.Forms.ColumnHeader ColDepartment;
+        private System.Windows.Forms.ContextMenuStrip CmsDoctor;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

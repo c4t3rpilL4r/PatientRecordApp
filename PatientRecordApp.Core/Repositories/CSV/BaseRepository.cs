@@ -6,37 +6,37 @@ using System.Text;
 
 namespace PatientRecordApp.Core.Repositories.CSV
 {
-	public abstract class BaseRepository<T>
-	{
-		protected abstract string FilePath { get; }
-		protected abstract IList<T> DataList { get; }
+    public abstract class BaseRepository<T>
+    {
+        protected abstract string FilePath { get; }
+        protected abstract IList<T> DataList { get; }
 
-		public bool WriteIntoCSVFile()
-		{
-			try
-			{
-				var stringBuilder = new StringBuilder();
+        public bool WriteIntoCSVFile()
+        {
+            try
+            {
+                var stringBuilder = new StringBuilder();
 
-				foreach (T listData in DataList)
-				{
-					var value = listData.GetType().GetProperties().Select(x => x.GetValue(listData).ToString());
+                foreach (T listData in DataList)
+                {
+                    var value = listData.GetType().GetProperties().Select(x => x.GetValue(listData).ToString());
 
-					var data = string.Join(",", value.Append(Environment.NewLine));
+                    var data = string.Join(",", value.Append(Environment.NewLine));
 
-					stringBuilder.Append(data);
-				}
+                    stringBuilder.Append(data);
+                }
 
-				using (StreamWriter streamWriter = new StreamWriter(FilePath))
-				{
-					streamWriter.Write(stringBuilder);
-				}
+                using (StreamWriter streamWriter = new StreamWriter(FilePath))
+                {
+                    streamWriter.Write(stringBuilder);
+                }
 
-				return true;
-			}
-			catch (Exception)
-			{
-				return false;
-			}
-		}
-	}
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+    }
 }

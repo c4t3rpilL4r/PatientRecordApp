@@ -3,17 +3,17 @@ using System.Windows.Forms;
 
 namespace PatientRecordApp.UI.Winforms.MDI
 {
-	static class Program
-	{
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main()
-		{
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new FrmPatientRecordApp());
-		}
-	}
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FrmPatientRecordApp());
+        }
+    }
 }

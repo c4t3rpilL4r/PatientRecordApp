@@ -1,6 +1,6 @@
 ﻿namespace PatientRecordApp.UI.Winforms.MDI
 {
-    partial class FrmAddDoctor
+    partial class FrmAddEditDoctor
     {
         /// <summary>
         /// Required designer variable.
@@ -116,7 +116,7 @@
             this.label1.TabIndex = 100;
             this.label1.Text = "First Name:";
             // 
-            // FrmAddDoctor
+            // FrmAddEditDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,9 +126,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmAddDoctor";
+            this.Name = "FrmAddEditDoctor";
             this.Text = "Doctor Information";
-            this.Load += new System.EventHandler(this.FrmAddDoctor_Load);
+            this.Activated += new System.EventHandler(this.FrmAddEditDoctor_Activated);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -1,6 +1,7 @@
 ﻿using PatientRecordApp.Core.Managers.CSV;
 using PatientRecordApp.Core.Managers.CSV.Interfaces;
 using PatientRecordApp.Core.Models;
+using PatientRecordApp.UI.Winforms.MDI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,19 +14,42 @@ namespace PatientRecordApp.UI.Winforms.MDI
     {
         private readonly IPatientManager _patientManager;
         private readonly IDoctorManager _doctorManager;
+
         private readonly IList<Patient> _patientList;
         private readonly IList<Doctor> _doctorList;
 
-        public FrmViewPatient()
+        private Form _parentForm;
+
+        public FrmViewPatient(Form parentForm)
         {
             _patientManager = new PatientManager();
             _doctorManager = new DoctorManager();
             _patientList = _patientManager.Read();
             _doctorList = _doctorManager.Read();
+            _parentForm = parentForm;
             InitializeComponent();
         }
 
         private void FrmViewPatient_Activated(object sender, EventArgs e) => DisplayDataInListView(_patientList);
+
+        private void LvPatients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (LvPatients.SelectedItems.Count > 0)
+            {
+                var form = new FrmAddEditPatient(LvPatients.SelectedItems[0].Tag as Patient);
+                FormHelper.OpenForm(_parentForm, form);
+            }
+        }
 
         private void DisplayDataInListView(IList<Patient> patientList)
         {
@@ -53,6 +77,5 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
             LvPatients.Items.AddRange(listViewItemList.ToArray());
         }
-
     }
 }

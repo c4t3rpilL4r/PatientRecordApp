@@ -2,11 +2,11 @@
 
 namespace PatientRecordApp.Core.Repositories.CSV.Interfaces
 {
-	public interface IRepository<T>
-	{
-		bool Create(T data);
-		IList<T> Read();
-		bool Update(T oldData, T newData);
-		bool Delete(List<T> dataList);
-	}
+    public interface IRepository<T>
+    {
+        bool Create(T data);
+        IList<T> Read();
+        bool Update(T oldData, T newData);
+        bool Delete(List<T> dataList);
+    }
 }

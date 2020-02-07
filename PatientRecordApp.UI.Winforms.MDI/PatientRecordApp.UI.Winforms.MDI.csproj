@@ -54,17 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmAddDoctor.cs">
+    <Compile Include="FrmAddEditDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAddDoctor.Designer.cs">
-      <DependentUpon>FrmAddDoctor.cs</DependentUpon>
+    <Compile Include="FrmAddEditDoctor.Designer.cs">
+      <DependentUpon>FrmAddEditDoctor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAddPatient.cs">
+    <Compile Include="FrmAddEditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAddPatient.Designer.cs">
-      <DependentUpon>FrmAddPatient.cs</DependentUpon>
+    <Compile Include="FrmAddEditPatient.Designer.cs">
+      <DependentUpon>FrmAddEditPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPatientRecordApp.cs">
       <SubType>Form</SubType>
@@ -90,14 +90,14 @@
     <Compile Include="FrmViewPatient.Designer.cs">
       <DependentUpon>FrmViewPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\SettingsHelper.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmAddDoctor.resx">
-      <DependentUpon>FrmAddDoctor.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAddEditDoctor.resx">
+      <DependentUpon>FrmAddEditDoctor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAddPatient.resx">
-      <DependentUpon>FrmAddPatient.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAddEditPatient.resx">
+      <DependentUpon>FrmAddEditPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPatientRecordApp.resx">
       <DependentUpon>FrmPatientRecordApp.cs</DependentUpon>

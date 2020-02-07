@@ -1,5 +1,4 @@
 ﻿using PatientRecordApp.Core.Constants;
-using PatientRecordApp.Core.Managers.CSV.Interfaces;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -46,13 +45,13 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
 		private void patientToolStripMenuItem_Click(object sender, System.EventArgs e)
 		{
-			var form = new FrmAddPatient();
+			var form = new FrmAddEditPatient();
 			OpenForm(form);
 		}
 
 		private void doctorToolStripMenuItem_Click(object sender, System.EventArgs e)
 		{
-			var form = new FrmAddDoctor();
+			var form = new FrmAddEditDoctor();
 			OpenForm(form);
 		}
 
@@ -64,13 +63,13 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
 		private void patientsToolStripMenuItem_Click(object sender, System.EventArgs e)
 		{
-			var form = new FrmViewPatient();
+			var form = new FrmViewPatient(this);
 			OpenForm(form);
 		}
 
 		private void doctorsToolStripMenuItem_Click(object sender, System.EventArgs e)
 		{
-			var form = new FrmViewDoctor();
+			var form = new FrmViewDoctor(this);
 			OpenForm(form);
 		}
 

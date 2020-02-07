@@ -1,6 +1,6 @@
 ﻿namespace PatientRecordApp.UI.Winforms.MDI
 {
-    partial class FrmAddPatient
+    partial class FrmAddEditPatient
     {
         /// <summary>
         /// Required designer variable.
@@ -371,7 +371,7 @@
             this.RdoMale.Text = "Male";
             this.RdoMale.UseVisualStyleBackColor = true;
             // 
-            // FrmAddPatient
+            // FrmAddEditPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -381,10 +381,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmAddPatient";
+            this.Name = "FrmAddEditPatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Information";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.FrmAddPatient_Load);
+            this.Activated += new System.EventHandler(this.FrmAddEditPatient_Activated);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.GbGender.ResumeLayout(false);
