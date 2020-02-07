@@ -30,16 +30,23 @@ namespace PatientRecordApp.UI.Winforms.MDI
             InitializeComponent();
         }
 
-        private void FrmViewPatient_Activated(object sender, EventArgs e) => DisplayDataInListView(_patientList);
-
-        private void LvPatients_SelectedIndexChanged(object sender, EventArgs e)
+        private void LvPatients_MouseDown(object sender, MouseEventArgs e)
         {
-
+            if (LvPatients.SelectedItems.Count == 0)
+            {
+                foreach (ToolStripMenuItem toolStrip in CmsPatient.Items)
+                {
+                    toolStrip.Enabled = !(toolStrip.Name.Equals("Edit") || toolStrip.Name.Equals("Delete"));
+                }
+            }
         }
+
+        private void FrmViewPatient_Activated(object sender, EventArgs e) => DisplayDataInListView(_patientList);
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var form = new FrmAddEditPatient();
+            FormHelper.OpenForm(_parentForm, form);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
