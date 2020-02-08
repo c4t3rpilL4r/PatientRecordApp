@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace PatientRecordApp.Core.Managers.CSV.Interfaces
 {
-    public interface IPatientManager : IManager<Patient>
-    {
-        IList<Patient> Search(SearchFilters filters);
-    }
+	public interface IPatientManager : IManager<Patient>
+	{
+		IList<Patient> Search(SearchFilters filters);
+	}
 }
