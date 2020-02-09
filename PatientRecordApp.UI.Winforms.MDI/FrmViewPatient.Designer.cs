@@ -151,6 +151,7 @@
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
 			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
 			this.deleteToolStripMenuItem.Text = "Delete";
+			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
 			// 
 			// BtnResetSearch
 			// 
@@ -160,6 +161,7 @@
 			this.BtnResetSearch.TabIndex = 7;
 			this.BtnResetSearch.Text = "Reset Search";
 			this.BtnResetSearch.UseVisualStyleBackColor = true;
+			this.BtnResetSearch.Click += new System.EventHandler(this.BtnResetSearch_Click);
 			// 
 			// GbSearchFilters
 			// 
@@ -169,9 +171,9 @@
 			this.GbSearchFilters.Controls.Add(this.DtpDateOfConsultation);
 			this.GbSearchFilters.Controls.Add(this.GbGender);
 			this.GbSearchFilters.Controls.Add(this.label2);
-			this.GbSearchFilters.Location = new System.Drawing.Point(64, 59);
+			this.GbSearchFilters.Location = new System.Drawing.Point(30, 59);
 			this.GbSearchFilters.Name = "GbSearchFilters";
-			this.GbSearchFilters.Size = new System.Drawing.Size(740, 75);
+			this.GbSearchFilters.Size = new System.Drawing.Size(815, 75);
 			this.GbSearchFilters.TabIndex = 6;
 			this.GbSearchFilters.TabStop = false;
 			this.GbSearchFilters.Text = "Filters";
@@ -192,8 +194,9 @@
 			this.CboDoctor.FormattingEnabled = true;
 			this.CboDoctor.Location = new System.Drawing.Point(453, 38);
 			this.CboDoctor.Name = "CboDoctor";
-			this.CboDoctor.Size = new System.Drawing.Size(263, 21);
+			this.CboDoctor.Size = new System.Drawing.Size(337, 21);
 			this.CboDoctor.TabIndex = 8;
+			this.CboDoctor.SelectedIndexChanged += new System.EventHandler(this.CboDoctor_SelectedIndexChanged);
 			// 
 			// label3
 			// 
@@ -210,6 +213,7 @@
 			this.DtpDateOfConsultation.Name = "DtpDateOfConsultation";
 			this.DtpDateOfConsultation.Size = new System.Drawing.Size(200, 20);
 			this.DtpDateOfConsultation.TabIndex = 6;
+			this.DtpDateOfConsultation.ValueChanged += new System.EventHandler(this.DtpDateOfConsultation_ValueChanged);
 			// 
 			// GbGender
 			// 
@@ -231,6 +235,7 @@
 			this.RdbFemale.TabStop = true;
 			this.RdbFemale.Text = "Female";
 			this.RdbFemale.UseVisualStyleBackColor = true;
+			this.RdbFemale.CheckedChanged += new System.EventHandler(this.RdbFemale_CheckedChanged);
 			// 
 			// RdbMale
 			// 
@@ -242,6 +247,7 @@
 			this.RdbMale.TabStop = true;
 			this.RdbMale.Text = "Male";
 			this.RdbMale.UseVisualStyleBackColor = true;
+			this.RdbMale.CheckedChanged += new System.EventHandler(this.RdbMale_CheckedChanged);
 			// 
 			// label2
 			// 
@@ -272,6 +278,7 @@
 			this.BtnSearch.TabIndex = 3;
 			this.BtnSearch.Text = "Search Name";
 			this.BtnSearch.UseVisualStyleBackColor = true;
+			this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
 			// 
 			// TxtSearch
 			// 

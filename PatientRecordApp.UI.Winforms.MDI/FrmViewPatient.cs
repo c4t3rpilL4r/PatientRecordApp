@@ -20,6 +20,8 @@ namespace PatientRecordApp.UI.Winforms.MDI
 		private readonly IList<Doctor> _doctorList;
 
 		private Form _parentForm;
+		private static string _date;
+		private static bool _resetFlag;
 
 		public FrmViewPatient(Form parentForm)
 		{
@@ -34,7 +36,11 @@ namespace PatientRecordApp.UI.Winforms.MDI
 		private void FrmViewPatient_Activated(object sender, EventArgs e)
 		{
 			CboDoctor.Items.Clear();
-			CboDoctor.Items.AddRange(_doctorList.Select(doctor => $"Dr. {doctor.FirstName} {doctor.LastName}, {doctor.Department}").ToArray());
+			CboDoctor.Items.AddRange(_patientList.Select(x =>
+			{
+				var doctor = _doctorList.FirstOrDefault(y => y.Id == x.DoctorId);
+				return $"Dr. {doctor.FirstName} {doctor.LastName}, {doctor.Department}";
+			}).Distinct().ToArray());
 
 			DisplayDataInListView(_patientList);
 		}
@@ -85,6 +91,54 @@ namespace PatientRecordApp.UI.Winforms.MDI
 			}
 		}
 
+		private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (LvPatients.SelectedItems.Count > 0)
+			{
+				if (MessageBox.Show("Are you sure you want to delete data?",
+					"Delete Verification",
+					MessageBoxButtons.YesNo,
+					MessageBoxIcon.Question,
+					MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+				{
+					var patientsToBeDeleted = new List<int>();
+
+					LvPatients.SelectedItems.Cast<ListViewItem>().ToList().ForEach(x => patientsToBeDeleted.Add(int.Parse(x.SubItems[0].Text)));
+
+					MessageBox.Show(_patientManager.Delete(patientsToBeDeleted) ? "Patient/s deletion successful." : "Patient/s deletion failed.");
+				}
+			}
+
+			DisplayDataInListView(_patientManager.Search(RetrieveDataFromFilters()));
+		}
+
+		private void BtnSearch_Click(object sender, EventArgs e) => DisplayDataInListView(_patientManager.Search(RetrieveDataFromFilters()));
+
+		private void DtpDateOfConsultation_ValueChanged(object sender, EventArgs e)
+		{
+			_date = DtpDateOfConsultation.Value.Date.ToString().Substring(0, 10);
+			RunSearchFilterEvent();
+		}
+
+		private void RdbMale_CheckedChanged(object sender, EventArgs e) => RunSearchFilterEvent();
+
+		private void RdbFemale_CheckedChanged(object sender, EventArgs e) => RunSearchFilterEvent();
+
+		private void CboDoctor_SelectedIndexChanged(object sender, EventArgs e) => RunSearchFilterEvent();
+
+		private void BtnResetSearch_Click(object sender, EventArgs e)
+		{
+			DisplayDataInListView(_patientList);
+
+			_resetFlag = true;
+			TxtSearch.Clear();
+			RdbMale.Checked = false;
+			RdbFemale.Checked = false;
+			DtpDateOfConsultation.ResetText();
+			CboDoctor.ResetText();
+			_resetFlag = false;
+		}
+
 		private void DisplayDataInListView(IList<Patient> patientList)
 		{
 			LvPatients.Items.Clear();
@@ -106,12 +160,56 @@ namespace PatientRecordApp.UI.Winforms.MDI
 				row.SubItems.Add($"Dr. {doctor.FirstName} {doctor.LastName}, {doctor.Department}");
 
 				row.Tag = patient;
-				//row.ToolTipText = patient.Diagnosis;
 
 				listViewItemList.Add(row);
 			}
 
 			LvPatients.Items.AddRange(listViewItemList.ToArray());
+		}
+
+		private SearchFilters RetrieveDataFromFilters()
+		{
+			var gender = string.Empty;
+
+			if (RdbMale.Checked)
+			{
+				gender = "Male";
+			}
+			else if (RdbFemale.Checked)
+			{
+				gender = "Female";
+			}
+
+			int doctorId;
+
+			if (CboDoctor.SelectedIndex != -1)
+			{
+				var cboDoctor = CboDoctor.SelectedItem.ToString().Replace("Dr. ", string.Empty).Split(',');
+
+				doctorId = _doctorList.FirstOrDefault(x => cboDoctor[0].Equals($"{x.FirstName} {x.LastName}") && cboDoctor[1].Trim(' ').Equals(x.Department)).Id;
+			}
+			else
+			{
+				doctorId = 0;
+			}
+
+			var filter = new SearchFilters()
+			{
+				FullName = TxtSearch.Text,
+				Gender = gender,
+				DateOfConsultation = _date,
+				DoctorId = doctorId
+			};
+
+			return filter;
+		}
+
+		private void RunSearchFilterEvent()
+		{
+			if (!_resetFlag)
+			{
+				DisplayDataInListView(_patientManager.Search(RetrieveDataFromFilters()));
+			}
 		}
 	}
 }

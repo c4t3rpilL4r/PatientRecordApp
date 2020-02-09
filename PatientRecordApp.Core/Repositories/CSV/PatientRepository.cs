@@ -20,10 +20,7 @@ namespace PatientRecordApp.Core.Repositories.CSV
 
 		private static IList<Patient> _patientList = new List<Patient>();
 
-		public PatientRepository()
-		{
-			_patientList = Read();
-		}
+		public PatientRepository() => _patientList = Read();
 
 		public bool Create(Patient data)
 		{
@@ -32,11 +29,11 @@ namespace PatientRecordApp.Core.Repositories.CSV
 			return WriteIntoCSVFile();
 		}
 
-		public bool Delete(List<Patient> dataList)
+		public bool Delete(List<int> dataList)
 		{
 			dataList.ForEach(tobeRemove =>
 			{
-				_patientList.Remove(_patientList.FirstOrDefault(patient => patient.Id == tobeRemove.Id));
+				_patientList.Remove(_patientList.FirstOrDefault(patient => patient.Id == tobeRemove));
 			});
 
 			return WriteIntoCSVFile();
@@ -137,18 +134,17 @@ namespace PatientRecordApp.Core.Repositories.CSV
 				searchList = new List<Patient>();
 			}
 
-			if (!string.IsNullOrWhiteSpace(filters.Diagnosis))
+			if (filters.DoctorId > 0)
 			{
 				foreach (Patient patient in patientList)
 				{
-					if (patient.Diagnosis.Equals(filters.Diagnosis))
+					if (patient.DoctorId == filters.DoctorId)
 					{
 						searchList.Add(patient);
 					}
 				}
 
 				patientList = searchList;
-				searchList = new List<Patient>();
 			}
 
 			return patientList;
@@ -161,6 +157,11 @@ namespace PatientRecordApp.Core.Repositories.CSV
 			_patientList.Add(newData);
 
 			return WriteIntoCSVFile();
+		}
+
+		public Patient FindById(int id)
+		{
+			return _patientList.FirstOrDefault(x => x.Id == id);
 		}
 	}
 }

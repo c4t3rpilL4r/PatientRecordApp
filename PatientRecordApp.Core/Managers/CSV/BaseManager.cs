@@ -13,9 +13,14 @@ namespace PatientRecordApp.Core.Managers
 			return Repository.Create(data);
 		}
 
-		public bool Delete(List<T> dataList)
+		public bool Delete(List<int> dataList)
 		{
 			return Repository.Delete(dataList);
+		}
+
+		public T FindById(int id)
+		{
+			return Repository.FindById(id);
 		}
 
 		public IList<T> Read()

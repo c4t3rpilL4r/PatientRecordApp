@@ -7,6 +7,7 @@ namespace PatientRecordApp.Core.Repositories.CSV.Interfaces
 		bool Create(T data);
 		IList<T> Read();
 		bool Update(T oldData, T newData);
-		bool Delete(List<T> dataList);
+		bool Delete(List<int> dataList);
+		T FindById(int id);
 	}
 }

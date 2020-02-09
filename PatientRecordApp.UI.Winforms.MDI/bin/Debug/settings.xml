@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings>
-	<HospitalName></HospitalName>
-	<FilePath>
-		<PatientCSV>D:\PatientRecordApp\PatientRecordApp.Core\CSV\patients.csv</PatientCSV>
-		<DoctorCSV>D:\PatientRecordApp\PatientRecordApp.Core\CSV\doctors.csv</DoctorCSV>
-	</FilePath>
-	<Id>
-		<Patient>2</Patient>
-		<Doctor>12</Doctor>
-	</Id>
+  <HospitalName>MillerDev</HospitalName>
+  <FilePath>
+    <PatientCSV>D:\PatientRecordApp\PatientRecordApp.Core\CSV\patients.csv</PatientCSV>
+    <DoctorCSV>D:\PatientRecordApp\PatientRecordApp.Core\CSV\doctors.csv</DoctorCSV>
+  </FilePath>
+  <Id>
+    <Patient>0</Patient>
+    <Doctor>0</Doctor>
+  </Id>
 </Settings>

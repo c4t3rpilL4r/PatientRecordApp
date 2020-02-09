@@ -31,11 +31,11 @@ namespace PatientRecordApp.Core.Repositories.CSV
 			return WriteIntoCSVFile();
 		}
 
-		public bool Delete(List<Doctor> dataList)
+		public bool Delete(List<int> dataList)
 		{
 			dataList.ForEach(tobeRemove =>
 			{
-				_doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == tobeRemove.Id));
+				_doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == tobeRemove));
 			});
 
 			return WriteIntoCSVFile();
@@ -71,6 +71,11 @@ namespace PatientRecordApp.Core.Repositories.CSV
 			_doctorList.Add(newData);
 
 			return WriteIntoCSVFile();
+		}
+
+		public Doctor FindById(int id)
+		{
+			return _doctorList.FirstOrDefault(x => x.Id == id);
 		}
 	}
 }

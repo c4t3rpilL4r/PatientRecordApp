@@ -30,8 +30,11 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
 		private void FrmAddEditPatient_Activated(object sender, EventArgs e)
 		{
+			PopulateComboBoxDoctor();
+
 			if (_patient != null)
 			{
+				var doc = string.Empty;
 				var doctor = _doctorList.FirstOrDefault(dr => dr.Id == _patient.DoctorId);
 
 				TxtFirstName.Text = _patient.FirstName;
@@ -47,10 +50,8 @@ namespace PatientRecordApp.UI.Winforms.MDI
 				TxtContactNumber.Text = _patient.ContactNumber.ToString();
 				TxtEmailAddress.Text = _patient.EmailAddress;
 				TxtDiagnosis.Text = _patient.Diagnosis;
-				CboDoctor.Text = $"Dr. {doctor.FirstName} {doctor.LastName}, {doctor.Department}";
+				CboDoctor.SelectedItem = CboDoctor.Items.Cast<string>().FirstOrDefault(x => x.Contains($"Dr. {doctor.FirstName} {doctor.LastName}, {doctor.Department}"));
 			}
-
-			PopulateComboBoxDoctor();
 		}
 
 		private void TxtAge_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);

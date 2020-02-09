@@ -13,9 +13,9 @@ namespace PatientRecordApp.UI.Winforms.MDI
 	public partial class FrmViewDoctor : Form
 	{
 		private readonly IDoctorManager _doctorManager;
-		private readonly IList<Doctor> _doctorList;
 
 		private Form _parentForm;
+		private static IList<Doctor> _doctorList;
 
 		public FrmViewDoctor(Form parentForm)
 		{
@@ -27,6 +27,12 @@ namespace PatientRecordApp.UI.Winforms.MDI
 
 		private void FrmViewDoctor_Activated(object sender, EventArgs e) => DisplayDataInListView(_doctorList);
 
+		private void addToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var form = new FrmAddEditDoctor();
+			FormHelper.OpenForm(_parentForm, form);
+		}
+
 		private void editToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (LvDoctor.SelectedItems.Count > 0)
@@ -34,6 +40,29 @@ namespace PatientRecordApp.UI.Winforms.MDI
 				var form = new FrmAddEditDoctor(LvDoctor.SelectedItems[0].Tag as Doctor);
 				FormHelper.OpenForm(_parentForm, form);
 			}
+		}
+
+		private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (LvDoctor.SelectedItems.Count > 0)
+			{
+				if (MessageBox.Show("Are you sure you want to delete data?",
+					"Delete Verification",
+					MessageBoxButtons.YesNo,
+					MessageBoxIcon.Question,
+					MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+				{
+					var doctorsToBeDeleted = new List<int>();
+
+					LvDoctor.SelectedItems.Cast<ListViewItem>().ToList().ForEach(x => doctorsToBeDeleted.Add(int.Parse(x.SubItems[0].Text)));
+
+					MessageBox.Show(_doctorManager.Delete(doctorsToBeDeleted) ? "Doctor/s deletion successful." : "Doctor/s deletion failed.");
+				}
+			}
+
+			_doctorList = _doctorManager.Read();
+
+			DisplayDataInListView(_doctorList);
 		}
 
 		private void DisplayDataInListView(IList<Doctor> doctorList)
