@@ -53,6 +53,19 @@ namespace PatientRecordApp.UI.Winforms.MDI
             }
         }
 
+        private void LvPatients_MouseDown(object sender, MouseEventArgs e)
+        {
+            var lvItem = LvPatients.GetItemAt(e.X, e.Y);
+
+            if (lvItem == null)
+            {
+                foreach (ToolStripMenuItem item in CmsPatient.Items)
+                {
+                    item.Enabled = !(item.Text.Equals("Edit") || item.Text.Equals("Delete"));
+                }
+            }
+        }
+
         private void LvPatients_MouseMove(object sender, MouseEventArgs e)
         {
             var lvItem = LvPatients.GetItemAt(e.X, e.Y);
