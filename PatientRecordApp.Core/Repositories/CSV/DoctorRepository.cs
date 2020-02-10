@@ -8,74 +8,74 @@ using System.Xml.Linq;
 
 namespace PatientRecordApp.Core.Repositories.CSV
 {
-	public class DoctorRepository : BaseRepository<Doctor>, IDoctorRepository
-	{
-		protected override string FilePath => XDocument.Load(Path.Combine(Directory.GetCurrentDirectory(), "settings.xml"))
-			.Element(SettingsXMLElement.SETTINGS)
-			.Element(SettingsXMLElement.FILEPATH)
-			.Element(SettingsXMLElement.DOCTORCSV)
-			.Value;
-		protected override IList<Doctor> DataList => _doctorList;
+    public class DoctorRepository : BaseRepository<Doctor>, IDoctorRepository
+    {
+        protected override string FilePath => XDocument.Load(Path.Combine(Directory.GetCurrentDirectory(), "settings.xml"))
+            .Element(SettingsXMLElement.SETTINGS)
+            .Element(SettingsXMLElement.FILEPATH)
+            .Element(SettingsXMLElement.DOCTORCSV)
+            .Value;
+        protected override IList<Doctor> DataList => _doctorList;
 
-		private static IList<Doctor> _doctorList = new List<Doctor>();
+        private static IList<Doctor> _doctorList = new List<Doctor>();
 
-		public DoctorRepository()
-		{
-			_doctorList = Read();
-		}
+        public DoctorRepository()
+        {
+            _doctorList = Read();
+        }
 
-		public bool Create(Doctor data)
-		{
-			_doctorList.Add(data);
+        public bool Create(Doctor data)
+        {
+            _doctorList.Add(data);
 
-			return WriteIntoCSVFile();
-		}
+            return WriteIntoCSVFile();
+        }
 
-		public bool Delete(List<int> dataList)
-		{
-			dataList.ForEach(tobeRemove =>
-			{
-				_doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == tobeRemove));
-			});
+        public bool Delete(List<int> dataList)
+        {
+            dataList.ForEach(tobeRemove =>
+            {
+                _doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == tobeRemove));
+            });
 
-			return WriteIntoCSVFile();
-		}
+            return WriteIntoCSVFile();
+        }
 
-		public IList<Doctor> Read()
-		{
-			if (_doctorList.Count == 0)
-			{
-				var doctorData = File.ReadAllLines(FilePath);
+        public IList<Doctor> Read()
+        {
+            if (_doctorList.Count == 0)
+            {
+                var doctorData = File.ReadAllLines(FilePath);
 
-				foreach (var line in doctorData)
-				{
-					var doctor = line.Split(',');
+                foreach (var line in doctorData)
+                {
+                    var doctor = line.Split(',');
 
-					_doctorList.Add(new Doctor()
-					{
-						Id = int.Parse(doctor[0]),
-						FirstName = doctor[1],
-						LastName = doctor[2],
-						Department = doctor[3]
-					});
-				}
-			}
+                    _doctorList.Add(new Doctor()
+                    {
+                        Id = int.Parse(doctor[0]),
+                        FirstName = doctor[1],
+                        LastName = doctor[2],
+                        Department = doctor[3]
+                    });
+                }
+            }
 
-			return _doctorList;
-		}
+            return _doctorList;
+        }
 
-		public bool Update(Doctor oldData, Doctor newData)
-		{
-			_doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == oldData.Id));
+        public bool Update(Doctor oldData, Doctor newData)
+        {
+            _doctorList.Remove(_doctorList.FirstOrDefault(doctor => doctor.Id == oldData.Id));
 
-			_doctorList.Add(newData);
+            _doctorList.Add(newData);
 
-			return WriteIntoCSVFile();
-		}
+            return WriteIntoCSVFile();
+        }
 
-		public Doctor FindById(int id)
-		{
-			return _doctorList.FirstOrDefault(x => x.Id == id);
-		}
-	}
+        public Doctor FindById(int id)
+        {
+            return _doctorList.FirstOrDefault(x => x.Id == id);
+        }
+    }
 }

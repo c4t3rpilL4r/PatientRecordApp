@@ -2,7 +2,7 @@
 
 namespace PatientRecordApp.Core.Repositories.CSV.Interfaces
 {
-	public interface IDoctorRepository : IRepository<Doctor>
-	{
-	}
+    public interface IDoctorRepository : IRepository<Doctor>
+    {
+    }
 }

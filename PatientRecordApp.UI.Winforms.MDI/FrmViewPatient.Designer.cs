@@ -1,33 +1,33 @@
 ﻿namespace PatientRecordApp.UI.Winforms.MDI
 {
-    partial class FrmViewPatient
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class FrmViewPatient
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.ColumnHeader ColDoctor;
 			this.LvPatients = new System.Windows.Forms.ListView();
@@ -71,13 +71,13 @@
 			// LvPatients
 			// 
 			this.LvPatients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColId,
-            this.ColSurname,
-            this.ColFirstName,
-            this.ColGender,
-            this.ColDateOfConsultation,
-            this.ColDoctorId,
-            ColDoctor});
+			this.ColId,
+			this.ColSurname,
+			this.ColFirstName,
+			this.ColGender,
+			this.ColDateOfConsultation,
+			this.ColDoctorId,
+			ColDoctor});
 			this.LvPatients.ContextMenuStrip = this.CmsPatient;
 			this.LvPatients.FullRowSelect = true;
 			this.LvPatients.GridLines = true;
@@ -90,7 +90,7 @@
 			this.LvPatients.TabIndex = 1;
 			this.LvPatients.UseCompatibleStateImageBehavior = false;
 			this.LvPatients.View = System.Windows.Forms.View.Details;
-			this.LvPatients.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LvPatients_MouseDown);
+			this.LvPatients.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LvPatients_MouseClick);
 			this.LvPatients.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LvPatients_MouseMove);
 			// 
 			// ColId
@@ -126,30 +126,32 @@
 			// CmsPatient
 			// 
 			this.CmsPatient.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+			this.addToolStripMenuItem,
+			this.editToolStripMenuItem,
+			this.deleteToolStripMenuItem});
 			this.CmsPatient.Name = "CmsPatient";
 			this.CmsPatient.Size = new System.Drawing.Size(117, 70);
 			// 
 			// addToolStripMenuItem
 			// 
 			this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-			this.addToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.addToolStripMenuItem.Text = "Add";
 			this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
 			// 
 			// editToolStripMenuItem
 			// 
+			this.editToolStripMenuItem.Enabled = false;
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-			this.editToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.editToolStripMenuItem.Text = "Edit";
 			this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem
 			// 
+			this.deleteToolStripMenuItem.Enabled = false;
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.deleteToolStripMenuItem.Text = "Delete";
 			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
 			// 
@@ -310,6 +312,9 @@
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.LvPatients);
 			this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "FrmViewPatient";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "View Patient";
@@ -323,34 +328,34 @@
 			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.ListView LvPatients;
-        private System.Windows.Forms.ColumnHeader ColId;
-        private System.Windows.Forms.ColumnHeader ColSurname;
-        private System.Windows.Forms.ColumnHeader ColFirstName;
-        private System.Windows.Forms.ColumnHeader ColGender;
-        private System.Windows.Forms.ColumnHeader ColDateOfConsultation;
-        private System.Windows.Forms.ContextMenuStrip CmsPatient;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.Button BtnResetSearch;
-        private System.Windows.Forms.GroupBox GbSearchFilters;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox CboDoctor;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker DtpDateOfConsultation;
-        private System.Windows.Forms.GroupBox GbGender;
-        private System.Windows.Forms.RadioButton RdbFemale;
-        private System.Windows.Forms.RadioButton RdbMale;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button BtnSearch;
-        private System.Windows.Forms.TextBox TxtSearch;
-        private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ListView LvPatients;
+		private System.Windows.Forms.ColumnHeader ColId;
+		private System.Windows.Forms.ColumnHeader ColSurname;
+		private System.Windows.Forms.ColumnHeader ColFirstName;
+		private System.Windows.Forms.ColumnHeader ColGender;
+		private System.Windows.Forms.ColumnHeader ColDateOfConsultation;
+		private System.Windows.Forms.ContextMenuStrip CmsPatient;
+		private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+		private System.Windows.Forms.Button BtnResetSearch;
+		private System.Windows.Forms.GroupBox GbSearchFilters;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.ComboBox CboDoctor;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.DateTimePicker DtpDateOfConsultation;
+		private System.Windows.Forms.GroupBox GbGender;
+		private System.Windows.Forms.RadioButton RdbFemale;
+		private System.Windows.Forms.RadioButton RdbMale;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.Button BtnSearch;
+		private System.Windows.Forms.TextBox TxtSearch;
+		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ColumnHeader ColDoctorId;
 		private System.Windows.Forms.ToolTip TtDiagnosis;
 	}
